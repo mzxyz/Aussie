@@ -42,7 +42,15 @@ module.exports = {
     'import/order': [
       'warn',
       {
-        groups: ['@screens', '@components', '@utils', '@types', '@hooks', '@stores', '@api'],
+        groups: [
+          '@screens',
+          '@components',
+          '@utils',
+          '@types',
+          '@hooks',
+          '@stores',
+          '@api',
+        ],
         'newlines-between': 'always',
       },
     ],
