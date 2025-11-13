@@ -1,29 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { PropertiesStackParamList } from '../../navigation/types';
+import { Header, ScrollViewContainer } from 'components/index';
+import { PropertiesStackParamList } from 'navigation/types';
+import { makeStyles } from 'theme/ThemeContext';
 
 type Props = NativeStackScreenProps<PropertiesStackParamList, 'PropertiesMain'>;
 
 export const PropertiesMainScreen: React.FC<Props> = () => {
+  const styles = useStyles();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Properties</Text>
-    </View>
+    <ScrollViewContainer>
+      <View style={styles.container}>
+        <Header style={styles.text} text="Coming soon!" />
+      </View>
+    </ScrollViewContainer>
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(({ colors }) => ({
   container: {
+    flex: 0.5,
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
-    flex: 1,
     justifyContent: 'center',
-    padding: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  text: {
+    color: colors.textHighlight,
   },
-});
+}));

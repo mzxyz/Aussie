@@ -1,29 +1,44 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { AppointmentStackParamList } from 'navigation/types';
+import { Body, Button, Header, ScrollViewContainer } from 'components/index';
+import { PropertiesStackParamList } from 'navigation/types';
+import { makeStyles } from 'theme/ThemeContext';
 
-type Props = NativeStackScreenProps<AppointmentStackParamList, 'AppointmentMain'>;
+type Props = NativeStackScreenProps<PropertiesStackParamList, 'PropertiesMain'>;
 
 export const AppointmentMainScreen: React.FC<Props> = () => {
+  const styles = useStyles();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Appointment</Text>
-    </View>
+    <ScrollViewContainer>
+      <View style={styles.container}>
+        <Image
+          source={require('../../assets/images/calendar.png')}
+          style={styles.image}
+        />
+        <Header style={styles.text} text="Connect with your broker" />
+        <Body style={styles.text} text="Meet with Soula to discuss your property goals" />
+        <Button text="Book an appointment with Soula" onPress={() => {}} />
+      </View>
+    </ScrollViewContainer>
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(({ margin, padding }) => ({
   container: {
-    alignItems: 'center',
-    backgroundColor: 'pink',
     flex: 1,
-    justifyContent: 'center',
-    padding: 20,
+    width: '100%',
+    alignItems: 'center',
+    padding: padding.large,
+    gap: margin.large,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  text: {
+    textAlign: 'center',
   },
-});
+  image: {
+    width: '100%',
+    height: 180,
+    resizeMode: 'contain',
+  },
+}));

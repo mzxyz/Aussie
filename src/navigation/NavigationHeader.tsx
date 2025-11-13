@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ colors, padding, margin, fontSizes, fontWeights 
     resizeMode: 'contain',
   },
   title: {
-    fontSize: fontSizes.header,
+    fontSize: fontSizes.subheader,
     fontWeight: fontWeights.bold,
     color: colors.textPrimary,
   },

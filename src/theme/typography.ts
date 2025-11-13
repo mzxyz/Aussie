@@ -8,6 +8,7 @@ export const fontSizes = {
   h1: 30,
   h2: 22,
   header: 28,
+  subheader: 24,
   title: 22,
   subtitle: 20,
   body: 16,

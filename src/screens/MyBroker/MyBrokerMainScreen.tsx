@@ -1,29 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { MyBrokerStackParamList } from 'navigation/types';
+import { Header, ScrollViewContainer } from 'components/index';
+import { PropertiesStackParamList } from 'navigation/types';
+import { makeStyles } from 'theme/ThemeContext';
 
-type Props = NativeStackScreenProps<MyBrokerStackParamList, 'MyBrokerMain'>;
+type Props = NativeStackScreenProps<PropertiesStackParamList, 'PropertiesMain'>;
 
 export const MyBrokerMainScreen: React.FC<Props> = () => {
+  const styles = useStyles();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>My broker</Text>
-    </View>
+    <ScrollViewContainer>
+      <View style={styles.container}>
+        <Header style={styles.text} text="Coming soon!" />
+      </View>
+    </ScrollViewContainer>
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(({ colors }) => ({
   container: {
+    flex: 0.5,
     alignItems: 'center',
-    backgroundColor: 'yellow',
-    flex: 1,
     justifyContent: 'center',
-    padding: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  text: {
+    color: colors.textHighlight,
   },
-});
+}));
