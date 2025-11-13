@@ -41,12 +41,6 @@
 	<array>
 		<string>arm64</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>FontAwesome6_Regular.ttf</string>
-		<string>FontAwesome6_Solid.ttf</string>
-		<string>FontAwesome6_Brands.ttf</string>
-	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -55,5 +49,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Ionicons.ttf</string>
+	</array>
 </dict>
 </plist>

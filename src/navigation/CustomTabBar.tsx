@@ -2,25 +2,26 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
-import { FontAwesome6 as Icon , FontAwesome6SolidIconName } from "@react-native-vector-icons/fontawesome6";
+import { Ionicons as Icon, IoniconsIconName } from "@react-native-vector-icons/ionicons";
 
 interface TabIconProps {
   name: string;
   focused: boolean;
 }
 
+// Ionicons: https://ionic.io/ionicons
 const iconMap: Record<string, string> = {
-  Home: 'house',
-  Finances: 'chart-simple',
-  Properties: 'building',
+  Home: 'home',
+  Finances: 'stats-chart',
+  Properties: 'storefront',
   Appointment: 'calendar',
-  'My broker': 'user',
+  'My broker': 'people',
 };
 
 const TabIcon: React.FC<TabIconProps> = ({ name, focused }) => {
-  const iconName = iconMap[name];
+  const iconName = `${iconMap[name]}${!focused ? '-outline' : ''}`;
   return <Text style={styles.iconText}>
-    <Icon name={iconName as FontAwesome6SolidIconName} size={24} color="#2e5196" iconStyle="brand" />
+    <Icon name={iconName as IoniconsIconName} size={24} color="#2e5196" />
   </Text>;
 };
 
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: '#ffffff',
+    paddingBottom: 40,
   },
   tab: {
     flex: 1,
