@@ -1,6 +1,6 @@
-import { lightColors, darkColors } from "./colors";
-import { padding, margin, spacings } from "./spacings";
-import { fontWeights, fontSizes } from "./typography";
+import { lightColors, darkColors } from './colors';
+import { padding, margin, spacings } from './spacings';
+import { fontWeights, fontSizes } from './typography';
 
 const defaultTheme = {
   spacings,
@@ -11,13 +11,13 @@ const defaultTheme = {
 };
 
 export const lightTheme = {
-  mode: "light",
+  mode: 'light',
   colors: lightColors,
   ...defaultTheme,
 };
 
 export const darkTheme = {
-  mode: "dark",
+  mode: 'dark',
   colors: darkColors,
   ...defaultTheme,
 };

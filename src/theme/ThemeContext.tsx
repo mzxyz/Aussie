@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useMemo } from "react";
 import { useColorScheme, StyleSheet } from "react-native";
 import { lightTheme, darkTheme } from "./theme";
 
@@ -15,7 +15,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const systemScheme = useColorScheme();
 
   const [theme, setTheme] = useState(
-    systemScheme === "dark" ? darkTheme : lightTheme
+    darkTheme
+    // TODO: enable it later
+    // systemScheme === "dark" ? darkTheme : lightTheme
   );
 
   return (
@@ -31,14 +33,14 @@ export const useTheme = () => {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
 
-  return context;
+  return context.theme;
 };
 
-export const makeStyles = <T extends StyleSheet.NamedStyles<T>>(
-  styles: (theme: Theme) => T | StyleSheet.NamedStyles<T>
+export const makeStyles = <T extends StyleSheet.NamedStyles<any>, P>(
+  stylesFn: (theme: Theme, props?: P) => T
 ) => {
-  return () => {
-    const { theme } = useTheme();
-    return StyleSheet.create(styles(theme) as StyleSheet.NamedStyles<T>);
+  return (props?: P): T => {
+    const theme = useTheme();
+    return useMemo(() => StyleSheet.create(stylesFn(theme, props)), [theme]) as T;
   };
 };

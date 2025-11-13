@@ -15,11 +15,11 @@ export const FinancesMainScreen: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: 'green',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
-    backgroundColor: 'green',
   },
   title: {
     fontSize: 24,

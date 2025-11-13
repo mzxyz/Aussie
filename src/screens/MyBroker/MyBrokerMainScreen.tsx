@@ -15,11 +15,11 @@ export const MyBrokerMainScreen: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: 'yellow',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
-    backgroundColor: 'yellow',
   },
   title: {
     fontSize: 24,

@@ -15,11 +15,11 @@ export const HomeMainScreen: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: 'lightgray',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
-    backgroundColor: 'lightgray',
   },
   title: {
     fontSize: 24,

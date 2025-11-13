@@ -15,11 +15,11 @@ export const AppointmentMainScreen: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: 'pink',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
-    backgroundColor: 'pink',
   },
   title: {
     fontSize: 24,

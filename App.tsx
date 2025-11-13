@@ -1,27 +1,38 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import { StatusBar, useColorScheme, View } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AppNavigator } from './src/navigation';
-import { ThemeProvider } from './src/theme/ThemeContext';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+import { AppNavigator } from './src/navigation';
+import { makeStyles, ThemeProvider } from './src/theme/ThemeContext';
+
+function AppContainer() {
+  // TODO: enable it later
+  // const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = true;
+  const styles = useStyles();
 
   return (
+    <SafeAreaView edges={['bottom']} style={styles.container}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <AppNavigator />
+    </SafeAreaView>
+  );
+}
+
+function App() {
+  return (
     <ThemeProvider>
-      <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: 'white' }}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <AppNavigator />
-      </SafeAreaView>
+      <AppContainer />
     </ThemeProvider>
   );
 }
+
+const useStyles = makeStyles(({ colors }) => ({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    paddingBottom: 0,
+  },
+}));
 
 export default App;

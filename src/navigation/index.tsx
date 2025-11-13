@@ -10,7 +10,7 @@ import {
   AppointmentStackParamList,
   MyBrokerStackParamList,
 } from './types';
-import { CustomTabBar } from './CustomTabBar';
+import { TabBar } from './TabBar';
 import { HomeMainScreen } from '../screens/Home/HomeMainScreen';
 import { FinancesMainScreen } from '../screens/Finances/FinancesMainScreen';
 import { PropertiesMainScreen } from '../screens/Properties/PropertiesMainScreen';
@@ -128,7 +128,7 @@ const tabConfigs: {
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
-      tabBar={props => <CustomTabBar {...props} />}
+      tabBar={props => <TabBar {...props} />}
       screenOptions={{
         headerShown: false,
       }}

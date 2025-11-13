@@ -1,17 +1,21 @@
 export const lightColors = {
-  primary: "#2563EB",
-  secondary: "#64748B",
-  danger: "#DC2626",
+  primary: '#2563EB',
+  secondary: '#64748B',
+  danger: '#DC2626',
 
-  background: "#FFFFFF",
-  text: "#1E293B",
+  background: '#FFFFFF',
+  textPrimary: '#1E293B',
+  textSecondary: '#b9b9b9',
+  textHighlight: '#2563EB',
 };
 
 export const darkColors = {
-  primary: "#2563EB",
-  secondary: "#64748B",
-  danger: "#DC2626",
+  primary: '#b2b1ef',
+  secondary: '#64748B',
+  danger: '#DC2626',
 
-  background: "#0F172A",
-  text: "#F8FAFC",
+  background: '#151413',
+  textPrimary: '#FFFFFF',
+  textSecondary: '#b9b9b9',
+  textHighlight: '#b2b1ef',
 };
