@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
-import { FontAwesome6 as Icon, FontAwesome6SolidIconName } from "@react-native-vector-icons/fontawesome6";
+import { FontAwesome6 as Icon , FontAwesome6SolidIconName } from "@react-native-vector-icons/fontawesome6";
 
 interface TabIconProps {
   name: string;
@@ -11,7 +11,7 @@ interface TabIconProps {
 
 const iconMap: Record<string, string> = {
   Home: 'house',
-  Finances: 'money-bill',
+  Finances: 'chart-simple',
   Properties: 'building',
   Appointment: 'calendar',
   'My broker': 'user',
@@ -20,7 +20,7 @@ const iconMap: Record<string, string> = {
 const TabIcon: React.FC<TabIconProps> = ({ name, focused }) => {
   const iconName = iconMap[name];
   return <Text style={styles.iconText}>
-    <Icon name={iconName as FontAwesome6SolidIconName} size={24} color="black" iconStyle={ "solid" } />
+    <Icon name={iconName as FontAwesome6SolidIconName} size={24} color="#2e5196" iconStyle="brand" />
   </Text>;
 };
 
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   highlightLineActive: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#2e5196',
   },
   iconContainer: {
     marginBottom: 4,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   labelActive: {
-    color: '#007AFF',
+    color: '#2e5196',
     fontWeight: '600',
   },
 });

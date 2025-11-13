@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-Aussie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Aussie.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		243F1F1F2EC5707A0080F99B /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 243F1F1B2EC5707A0080F99B /* FontAwesome6_Brands.ttf */; };
+		243F1F202EC5707A0080F99B /* FontAwesome6_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 243F1F1C2EC5707A0080F99B /* FontAwesome6_Regular.ttf */; };
+		243F1F212EC5707A0080F99B /* FontAwesome6_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 243F1F1D2EC5707A0080F99B /* FontAwesome6_Solid.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BEDF0E13FF5ECDAAE90B363A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		5ED94E42F6BA408F8D8B0D56 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188786467F814A209568F6A2 /* FontAwesome6_Brands.ttf */; };
+		C46F1C297FB84CC1B008B2C4 /* FontAwesome6_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0EF7D610DC643378C22216B /* FontAwesome6_Regular.ttf */; };
+		2F4F73150244427681E5DA8B /* FontAwesome6_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D86AE0986EC466FA549AE20 /* FontAwesome6_Solid.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,12 +25,18 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Aussie/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Aussie/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Aussie/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		243F1F1B2EC5707A0080F99B /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
+		243F1F1C2EC5707A0080F99B /* FontAwesome6_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Regular.ttf; sourceTree = "<group>"; };
+		243F1F1D2EC5707A0080F99B /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Solid.ttf; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Aussie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aussie.debug.xcconfig"; path = "Target Support Files/Pods-Aussie/Pods-Aussie.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Aussie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aussie.release.xcconfig"; path = "Target Support Files/Pods-Aussie/Pods-Aussie.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Aussie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Aussie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Aussie/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Aussie/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		188786467F814A209568F6A2 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; name = "FontAwesome6_Brands.ttf"; path = "fonts/FontAwesome6_Brands.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F0EF7D610DC643378C22216B /* FontAwesome6_Regular.ttf */ = {isa = PBXFileReference; name = "FontAwesome6_Regular.ttf"; path = "fonts/FontAwesome6_Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9D86AE0986EC466FA549AE20 /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; name = "FontAwesome6_Solid.ttf"; path = "fonts/FontAwesome6_Solid.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +54,7 @@
 		13B07FAE1A68108700A75B9A /* Aussie */ = {
 			isa = PBXGroup;
 			children = (
+				243F1F1E2EC5707A0080F99B /* fonts */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -49,6 +62,16 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 			);
 			name = Aussie;
+			sourceTree = "<group>";
+		};
+		243F1F1E2EC5707A0080F99B /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				243F1F1B2EC5707A0080F99B /* FontAwesome6_Brands.ttf */,
+				243F1F1C2EC5707A0080F99B /* FontAwesome6_Regular.ttf */,
+				243F1F1D2EC5707A0080F99B /* FontAwesome6_Solid.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -75,6 +98,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				A4B2D75559C547B19DB0161E /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -97,6 +121,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		A4B2D75559C547B19DB0161E /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				188786467F814A209568F6A2 /* FontAwesome6_Brands.ttf */,
+				F0EF7D610DC643378C22216B /* FontAwesome6_Regular.ttf */,
+				9D86AE0986EC466FA549AE20 /* FontAwesome6_Solid.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -161,6 +196,12 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				BEDF0E13FF5ECDAAE90B363A /* PrivacyInfo.xcprivacy in Resources */,
+				243F1F1F2EC5707A0080F99B /* FontAwesome6_Brands.ttf in Resources */,
+				243F1F202EC5707A0080F99B /* FontAwesome6_Regular.ttf in Resources */,
+				243F1F212EC5707A0080F99B /* FontAwesome6_Solid.ttf in Resources */,
+				5ED94E42F6BA408F8D8B0D56 /* FontAwesome6_Brands.ttf in Resources */,
+				C46F1C297FB84CC1B008B2C4 /* FontAwesome6_Regular.ttf in Resources */,
+				2F4F73150244427681E5DA8B /* FontAwesome6_Solid.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
