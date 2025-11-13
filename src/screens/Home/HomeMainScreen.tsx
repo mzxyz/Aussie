@@ -12,7 +12,7 @@ export const HomeMainScreen: React.FC<Props> = () => {
   const styles = useStyles();
 
   return (
-    <ScrollView style={styles.scrollView} contentContainerStyle={styles.container} contentInset={{ bottom: 80 }}>
+    <ScrollView style={styles.scrollView} contentContainerStyle={styles.container} contentInset={{ bottom: 60 }}>
       <Button
         type="secondary"
         text="Start your property search"

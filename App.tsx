@@ -12,7 +12,7 @@ function AppContainer() {
   const styles = useStyles();
 
   return (
-    <SafeAreaView edges={['bottom']} style={styles.container}>
+    <SafeAreaView edges={['top','bottom']} style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AppNavigator />
     </SafeAreaView>

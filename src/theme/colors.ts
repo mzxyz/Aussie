@@ -4,6 +4,7 @@ export const lightColors = {
   highlight: '#4b1f68',
 
   background: '#FFFFFF',
+  backgroundSecondary: '#f5f5f5',
   textPrimary: '#1E293B',
   textSecondary: '#b9b9b9',
   textHighlight: '#2563EB',
@@ -16,6 +17,7 @@ export const darkColors = {
   highlight: '#4b1f68',
 
   background: '#151413',
+  backgroundSecondary: '#1b1a1a',
   textPrimary: '#FFFFFF',
   textSecondary: '#b9b9b9',
   textHighlight: '#b2b1ef',

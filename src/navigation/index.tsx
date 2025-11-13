@@ -11,6 +11,9 @@ import {
   MyBrokerStackParamList,
 } from './types';
 import { TabBar } from './TabBar';
+import { NavigationHeader } from './NavigationHeader';
+import { useTheme } from '../theme/ThemeContext';
+import { IoniconsIconName } from '@react-native-vector-icons/ionicons';
 import { HomeMainScreen } from '../screens/Home/HomeMainScreen';
 import { FinancesMainScreen } from '../screens/Finances/FinancesMainScreen';
 import { PropertiesMainScreen } from '../screens/Properties/PropertiesMainScreen';
@@ -24,80 +27,99 @@ const PropertiesStack = createNativeStackNavigator<PropertiesStackParamList>();
 const AppointmentStack = createNativeStackNavigator<AppointmentStackParamList>();
 const MyBrokerStack = createNativeStackNavigator<MyBrokerStackParamList>();
 
-const HomeStackNavigator = () => (
-  <HomeStack.Navigator
-    screenOptions={{
-      headerShown: true,
-      // headerBackTitleVisible: false,
-    }}
-  >
-    <HomeStack.Screen
-      name="HomeMain"
-      component={HomeMainScreen}
-      options={{ title: 'Home' }}
-    />
-  </HomeStack.Navigator>
-);
+// Helper function to create header options
+const createHeaderOptions = (
+  title: string,
+  rightIcon?: { name: IoniconsIconName; onPress: () => void }
+) => ({
+  header: () => <NavigationHeader title={title} rightIcon={rightIcon} />,
+});
 
-const FinancesStackNavigator = () => (
-  <FinancesStack.Navigator
-    screenOptions={{
-      headerShown: true,
-      // headerBackTitleVisible: false,
-    }}
-  >
-    <FinancesStack.Screen
-      name="FinancesMain"
-      component={FinancesMainScreen}
-      options={{ title: 'Finances' }}
-    />
-  </FinancesStack.Navigator>
-);
+const useScreenOptions = () => {
+  const { colors } = useTheme();
+  return {
+    headerShown: true,
+    headerStyle: {
+      backgroundColor: colors.background,
+    },
+    headerTintColor: colors.textPrimary,
+  };
+}
 
-const PropertiesStackNavigator = () => (
-  <PropertiesStack.Navigator
-    screenOptions={{
-      headerShown: true,
-      // headerBackTitleVisible: false,
-    }}
-  >
-    <PropertiesStack.Screen
-      name="PropertiesMain"
-      component={PropertiesMainScreen}
-      options={{ title: 'Properties' }}
-    />
-  </PropertiesStack.Navigator>
-);
+const HomeStackNavigator = () => {
+  const screenOptions = useScreenOptions();
+  return (
+    <HomeStack.Navigator
+      screenOptions={screenOptions}
+    >
+      <HomeStack.Screen
+        name="HomeMain"
+        component={HomeMainScreen}
+        options={createHeaderOptions('Home')}
+      />
+    </HomeStack.Navigator>
+  );
+};
 
-const AppointmentStackNavigator = () => (
-  <AppointmentStack.Navigator
-    screenOptions={{
-      headerShown: true,
-      // headerBackTitleVisible: false,
-    }}
-  >
-    <AppointmentStack.Screen
-      name="AppointmentMain"
-      component={AppointmentMainScreen}
-      options={{ title: 'Appointment' }}
-    />
-  </AppointmentStack.Navigator>
-);
+const FinancesStackNavigator = () => {
+  const screenOptions = useScreenOptions();
+  return (
+    <FinancesStack.Navigator
+      screenOptions={screenOptions}
+    >
+      <FinancesStack.Screen
+        name="FinancesMain"
+        component={FinancesMainScreen}
+        options={createHeaderOptions('My finances')}
+      />
+    </FinancesStack.Navigator>
+  );
+};
 
-const MyBrokerStackNavigator = () => (
-  <MyBrokerStack.Navigator
-    screenOptions={{
-      headerShown: true,
-      // headerBackTitleVisible: false,
-    }}
-  >
-    <MyBrokerStack.Screen
-      name="MyBrokerMain"
-      component={MyBrokerMainScreen}
-      options={{ title: 'My broker' }}
-    />
-  </MyBrokerStack.Navigator>
-);
+const PropertiesStackNavigator = () => {
+  const screenOptions = useScreenOptions();
+  return (
+    <PropertiesStack.Navigator
+      screenOptions={screenOptions}
+    >
+      <PropertiesStack.Screen
+        name="PropertiesMain"
+        component={PropertiesMainScreen}
+        options={createHeaderOptions('My properties')}
+      />
+    </PropertiesStack.Navigator>
+  );
+};
+
+const AppointmentStackNavigator = () => {
+  const screenOptions = useScreenOptions();
+  return (
+    <AppointmentStack.Navigator
+      screenOptions={screenOptions}
+    >
+      <AppointmentStack.Screen
+        name="AppointmentMain"
+        component={AppointmentMainScreen}
+        options={createHeaderOptions('My appointment')}
+      />
+    </AppointmentStack.Navigator>
+  );
+};
+
+const MyBrokerStackNavigator = () => {
+  const screenOptions = useScreenOptions();
+  return (
+    <MyBrokerStack.Navigator
+      screenOptions={screenOptions}
+    >
+      <MyBrokerStack.Screen
+        name="MyBrokerMain"
+        component={MyBrokerMainScreen}
+        options={createHeaderOptions('My broker')}
+      />
+    </MyBrokerStack.Navigator>
+  );
+};
 
 const tabConfigs: {
   name: keyof RootTabParamList;

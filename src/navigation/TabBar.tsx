@@ -67,7 +67,7 @@ const useStyles = makeStyles(
     container: {
       flexDirection: 'row',
       justifyContent: 'space-around',
-      backgroundColor: colors.background,
+      backgroundColor: colors.backgroundSecondary,
     },
     tab: {
       flex: 1,
