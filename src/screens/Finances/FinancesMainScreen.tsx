@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { FinancesStackParamList } from '../../navigation/types';
+
+import { FinancesStackParamList } from 'navigation/types';
 
 type Props = NativeStackScreenProps<FinancesStackParamList, 'FinancesMain'>;
 

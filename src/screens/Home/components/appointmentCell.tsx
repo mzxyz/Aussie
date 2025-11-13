@@ -1,21 +1,27 @@
-import { TouchableWithoutFeedback, Image, Text, View } from 'react-native';
+import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { Ionicons as Icon } from '@react-native-vector-icons/ionicons';
-import { makeStyles, useTheme } from '../../../theme';
+
+import { makeStyles, useTheme } from 'theme/index';
 
 type AppointmentCellProps = {
   onPress: () => void;
 };
 
-export function AppointmentCell ({ onPress }: AppointmentCellProps) { 
+export function AppointmentCell({ onPress }: AppointmentCellProps) {
   const { colors } = useTheme();
   const styles = useStyles();
-  
+
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <View style={styles.contentContainer}>
-          <Image style={styles.image} source={require('../../../assets/images/appointment.png')} />
-          <Text style={styles.text} numberOfLines={3}>Book an appointment today.</Text>
+          <Image
+            style={styles.image}
+            source={require('../../../assets/images/appointment.png')}
+          />
+          <Text style={styles.text} numberOfLines={3}>
+            Book an appointment today.
+          </Text>
         </View>
         <View style={styles.iconContainer}>
           <Icon name="chevron-forward-outline" size={18} color={colors.textPrimary} />

@@ -1,24 +1,26 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  RootTabParamList,
-  HomeStackParamList,
-  FinancesStackParamList,
-  PropertiesStackParamList,
-  AppointmentStackParamList,
-  MyBrokerStackParamList,
-} from './types';
-import { TabBar } from './TabBar';
-import { NavigationHeader } from './NavigationHeader';
-import { useTheme } from '../theme/ThemeContext';
 import { IoniconsIconName } from '@react-native-vector-icons/ionicons';
-import { HomeMainScreen } from '../screens/Home/HomeMainScreen';
-import { FinancesMainScreen } from '../screens/Finances/FinancesMainScreen';
-import { PropertiesMainScreen } from '../screens/Properties/PropertiesMainScreen';
-import { AppointmentMainScreen } from '../screens/Appointment/AppointmentMainScreen';
-import { MyBrokerMainScreen } from '../screens/MyBroker/MyBrokerMainScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { AppointmentMainScreen } from 'screens/Appointment/AppointmentMainScreen';
+import { FinancesMainScreen } from 'screens/Finances/FinancesMainScreen';
+import { HomeMainScreen } from 'screens/Home/HomeMainScreen';
+import { MyBrokerMainScreen } from 'screens/MyBroker/MyBrokerMainScreen';
+import { PropertiesMainScreen } from 'screens/Properties/PropertiesMainScreen';
+import { useTheme } from 'theme/ThemeContext';
+
+import { NavigationHeader } from './NavigationHeader';
+import { TabBar } from './TabBar';
+import {
+  AppointmentStackParamList,
+  FinancesStackParamList,
+  HomeStackParamList,
+  MyBrokerStackParamList,
+  PropertiesStackParamList,
+  RootTabParamList,
+} from './types';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -30,7 +32,7 @@ const MyBrokerStack = createNativeStackNavigator<MyBrokerStackParamList>();
 // Helper function to create header options
 const createHeaderOptions = (
   title: string,
-  rightIcon?: { name: IoniconsIconName; onPress: () => void }
+  rightIcon?: { name: IoniconsIconName; onPress: () => void },
 ) => ({
   header: () => <NavigationHeader title={title} rightIcon={rightIcon} />,
 });
@@ -44,14 +46,12 @@ const useScreenOptions = () => {
     },
     headerTintColor: colors.textPrimary,
   };
-}
+};
 
 const HomeStackNavigator = () => {
   const screenOptions = useScreenOptions();
   return (
-    <HomeStack.Navigator
-      screenOptions={screenOptions}
-    >
+    <HomeStack.Navigator screenOptions={screenOptions}>
       <HomeStack.Screen
         name="HomeMain"
         component={HomeMainScreen}
@@ -64,9 +64,7 @@ const HomeStackNavigator = () => {
 const FinancesStackNavigator = () => {
   const screenOptions = useScreenOptions();
   return (
-    <FinancesStack.Navigator
-      screenOptions={screenOptions}
-    >
+    <FinancesStack.Navigator screenOptions={screenOptions}>
       <FinancesStack.Screen
         name="FinancesMain"
         component={FinancesMainScreen}
@@ -79,9 +77,7 @@ const FinancesStackNavigator = () => {
 const PropertiesStackNavigator = () => {
   const screenOptions = useScreenOptions();
   return (
-    <PropertiesStack.Navigator
-      screenOptions={screenOptions}
-    >
+    <PropertiesStack.Navigator screenOptions={screenOptions}>
       <PropertiesStack.Screen
         name="PropertiesMain"
         component={PropertiesMainScreen}
@@ -94,9 +90,7 @@ const PropertiesStackNavigator = () => {
 const AppointmentStackNavigator = () => {
   const screenOptions = useScreenOptions();
   return (
-    <AppointmentStack.Navigator
-      screenOptions={screenOptions}
-    >
+    <AppointmentStack.Navigator screenOptions={screenOptions}>
       <AppointmentStack.Screen
         name="AppointmentMain"
         component={AppointmentMainScreen}
@@ -109,9 +103,7 @@ const AppointmentStackNavigator = () => {
 const MyBrokerStackNavigator = () => {
   const screenOptions = useScreenOptions();
   return (
-    <MyBrokerStack.Navigator
-      screenOptions={screenOptions}
-    >
+    <MyBrokerStack.Navigator screenOptions={screenOptions}>
       <MyBrokerStack.Screen
         name="MyBrokerMain"
         component={MyBrokerMainScreen}

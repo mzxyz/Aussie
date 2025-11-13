@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
 import { PropertiesStackParamList } from '../../navigation/types';
 
 type Props = NativeStackScreenProps<PropertiesStackParamList, 'PropertiesMain'>;

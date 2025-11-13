@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import { makeStyles } from '../theme';
+
+import { makeStyles } from 'theme/index';
 
 type SpacingSize = 'sm' | 'md' | 'lg';
 
@@ -11,7 +12,7 @@ type SpacingProps = {
 export const Spacing: React.FC<SpacingProps> = ({ size = 'md' }) => {
   const styles = useStyles({ size });
   return <View style={styles.container} />;
-}
+};
 
 const spacingSizes = {
   sm: 24,
@@ -19,12 +20,10 @@ const spacingSizes = {
   lg: 48,
 };
 
-const useStyles = makeStyles(
-  (_, props?: { size: SpacingSize }) => ({
-    container: {
-      height: spacingSizes[props?.size ?? 'md'],
-      width: '100%',
-      backgroundColor: 'blue',
-    },
-  })
-);
+const useStyles = makeStyles((_, props?: { size: SpacingSize }) => ({
+  container: {
+    height: spacingSizes[props?.size ?? 'md'],
+    width: '100%',
+    backgroundColor: 'blue',
+  },
+}));

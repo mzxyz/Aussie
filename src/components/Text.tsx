@@ -1,5 +1,7 @@
-import { makeStyles } from '../theme';
-import { Text, StyleProp, TextStyle } from 'react-native';
+import React from 'react';
+import { StyleProp, Text, TextStyle } from 'react-native';
+
+import { makeStyles } from 'theme/index';
 
 type TextProps = {
   text: string;

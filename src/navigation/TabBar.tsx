@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
 import {
   BottomTabBarProps,
   BottomTabNavigationEventMap,
 } from '@react-navigation/bottom-tabs';
 import { NavigationHelpers } from '@react-navigation/native';
 import { ParamListBase } from '@react-navigation/routers';
-import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
 
-import { makeStyles, useTheme } from '../theme/ThemeContext';
+import { makeStyles, useTheme } from 'theme/ThemeContext';
 
 type TabIconProps = {
   navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap>;

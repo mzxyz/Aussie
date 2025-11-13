@@ -6,6 +6,7 @@ import reactNativePlugin from 'eslint-plugin-react-native';
 import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 export default [
   // Global ignores
@@ -43,13 +44,20 @@ export default [
       'react-native': reactNativePlugin,
       import: importPlugin,
       prettier: prettierPlugin,
+      'simple-import-sort': simpleImportSort,
     },
     settings: {
       react: {
         version: 'detect',
       },
+      'import/internal-regex': '^@(?:api|components|hooks|navigation|screens|stores|theme|types|utils)(/|$)',
       'import/resolver': {
-        typescript: {},
+        typescript: {
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
       },
     },
     rules: {
@@ -70,11 +78,19 @@ export default [
 
       // Import rules
       ...importPlugin.configs.recommended.rules,
-      // Allow require() for image files (React Native standard)
-      'import/no-require': [
+      // Allow require() for static assets while keeping other CommonJS imports blocked
+      '@typescript-eslint/no-require-imports': [
         'error',
         {
           allow: ['\\.(png|jpg|jpeg|gif|svg|webp)$'],
+        },
+      ],
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
 
@@ -83,6 +99,31 @@ export default [
 
       // Disable conflicting rules (prettier config)
       ...prettierConfig.rules,
+    },
+  },
+
+  // Override for JS/TS/TSX files (excluding JSX) - uses simple-import-sort
+  {
+    files: ['**/*.{js,ts,tsx}'],
+    rules: {
+      // Disable import/order for files using simple-import-sort
+      'import/order': 'off',
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^react', '^@?\\w'],
+            ['^(components|hooks|navigation|screens|stores|theme|types|utils)(/.*|$)'],
+            [
+              '^\\.\\.(?!/?$)',
+              '^\\.\\./?$',
+              '^\\./(?=.*/)(?!/?$)',
+              '^\\.(?!/?$)',
+              '^\\./?$',
+            ],
+          ],
+        },
+      ],
     },
   },
 ];

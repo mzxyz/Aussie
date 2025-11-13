@@ -1,8 +1,8 @@
-import { TouchableOpacity, Text } from 'react-native';
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
-import { makeStyles, useTheme } from '../theme/ThemeContext';
-import { fontSizes } from '../theme/typography';
-import { margin, padding } from '../theme/spacings';
+
+import { makeStyles, padding, useTheme } from 'theme/index';
 
 type ButtonProps = {
   text: string;

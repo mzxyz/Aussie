@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
-import { useTheme } from '../theme/ThemeContext';
-import { makeStyles } from '../theme';
-import { padding } from 'src/theme/spacings';
+
+import { makeStyles, useTheme } from 'theme/index';
 
 type CustomHeaderProps = {
   title: string;
@@ -60,4 +59,3 @@ const useStyles = makeStyles(({ colors, padding, margin, fontSizes, fontWeights 
     padding: 4,
   },
 }));
-
