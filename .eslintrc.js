@@ -17,6 +17,7 @@ module.exports = {
     'react-native',
     'react-hooks',
     'import',
+    'auto-import',
     'prettier',
   ],
   extends: [
@@ -38,6 +39,8 @@ module.exports = {
     },
   },
   rules: {
+    // Prettier integration
+    'prettier/prettier': 'error',
     // Imports
     'import/order': [
       'warn',
