@@ -70,6 +70,13 @@ export default [
 
       // Import rules
       ...importPlugin.configs.recommended.rules,
+      // Allow require() for image files (React Native standard)
+      'import/no-require': [
+        'error',
+        {
+          allow: ['\\.(png|jpg|jpeg|gif|svg|webp)$'],
+        },
+      ],
 
       // Prettier integration
       'prettier/prettier': 'error',

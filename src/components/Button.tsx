@@ -1,8 +1,3 @@
-// button has 2 types
-// first type is bgcolor with primary color and text color is textDark.
-// second type is default background color and border withdth 1 and border color is primary, text is text primary
-// the content includes icon at left and text at right. but all of them are centered in a row, it may have icon or not
-
 import { TouchableOpacity, Text } from 'react-native';
 import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
 import { makeStyles, useTheme } from '../theme/ThemeContext';
@@ -25,10 +20,10 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const isPrimary = type === 'primary';
   const styles = useStyles({ isPrimary });
-  const theme = useTheme();
+  const { colors, fontSizes } = useTheme();
 
-  const iconSize = icon?.size ?? theme.fontSizes.title;
-  const iconColor = icon?.color ?? theme.colors.textHighlight;
+  const iconSize = icon?.size ?? fontSizes.title;
+  const iconColor = isPrimary ? colors.textDark : colors.textHighlight;
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -41,23 +36,23 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 const useStyles = makeStyles(
-  ({ colors, fontWeights }, props?: { isPrimary: boolean }) => ({
+  ({ colors, fontWeights, spacings }, props?: { isPrimary: boolean }) => ({
     container: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
       padding: padding.large,
       width: '100%',
-      borderRadius: props?.isPrimary ? '100%' : 15,
+      borderRadius: props?.isPrimary ? 40 : 15,
       borderWidth: props?.isPrimary ? 0 : 1,
       borderColor: props?.isPrimary ? 'transparent' : colors.primary,
       backgroundColor: props?.isPrimary ? colors.primary : colors.background,
-      gap: margin.small,
+      gap: spacings.sm,
     },
     text: {
       fontSize: fontSizes.body,
       color: props?.isPrimary ? colors.textDark : colors.textPrimary,
-      fontWeight: fontWeights.bold,
+      fontWeight: props?.isPrimary ? fontWeights.medium : fontWeights.bold,
     },
   }),
 );

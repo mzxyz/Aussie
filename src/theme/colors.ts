@@ -1,7 +1,7 @@
 export const lightColors = {
   primary: '#2563EB',
   secondary: '#64748B',
-  danger: '#DC2626',
+  highlight: '#4b1f68',
 
   background: '#FFFFFF',
   textPrimary: '#1E293B',
@@ -13,7 +13,7 @@ export const lightColors = {
 export const darkColors = {
   primary: '#b2b1ef',
   secondary: '#64748B',
-  danger: '#DC2626',
+  highlight: '#4b1f68',
 
   background: '#151413',
   textPrimary: '#FFFFFF',
