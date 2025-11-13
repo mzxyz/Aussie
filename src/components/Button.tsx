@@ -39,7 +39,10 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 const useStyles = makeStyles(
-  ({ colors, fontWeights, spacings, fontSizes }, props?: { isPrimary: boolean, radius: 'full' | 'small' }) => ({
+  (
+    { colors, fontWeights, spacings, fontSizes },
+    props?: { isPrimary: boolean; radius: 'full' | 'small' },
+  ) => ({
     container: {
       flexDirection: 'row',
       alignItems: 'center',

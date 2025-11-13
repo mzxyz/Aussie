@@ -92,7 +92,7 @@ export default [
         {
           groups: [
             ['^react', '^@?\\w'],
-            ['^(components|hooks|navigation|screens|stores|theme|types|utils)(/.*|$)'],
+            ['^(components|hooks|navigation|screens|stores|theme|types|utils|services)(/.*|$)'],
             [
               '^\\.\\.(?!/?$)',
               '^\\.\\./?$',

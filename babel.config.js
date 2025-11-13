@@ -11,6 +11,7 @@ module.exports = {
           components: './src/components',
           navigation: './src/navigation',
           utils: './src/utils',
+          services: './src/services',
           types: './src/types',
           hooks: './src/hooks',
           stores: './src/stores',

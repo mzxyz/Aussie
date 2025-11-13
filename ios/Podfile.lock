@@ -8,6 +8,9 @@ PODS:
   - hermes-engine (0.80.0):
     - hermes-engine/Pre-built (= 0.80.0)
   - hermes-engine/Pre-built (0.80.0)
+  - MMKV (1.3.14):
+    - MMKVCore (~> 1.3.14)
+  - MMKVCore (1.3.14)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1648,6 +1651,36 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
+  - react-native-mmkv-storage (12.0.0):
+    - boost
+    - DoubleConversion
+    - fast_float
+    - fmt
+    - glog
+    - hermes-engine
+    - MMKV (~> 1.3.14)
+    - RCT-Folly
+    - RCT-Folly/Fabric
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - SocketRocket
+    - Yoga
   - react-native-safe-area-context (5.6.2):
     - boost
     - DoubleConversion
@@ -2348,6 +2381,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
+  - react-native-mmkv-storage (from `../node_modules/react-native-mmkv-storage`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-vector-icons-ionicons (from `../node_modules/@react-native-vector-icons/ionicons`)"
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -2388,6 +2422,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - MMKV
+    - MMKVCore
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -2472,6 +2508,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-mmkv-storage:
+    :path: "../node_modules/react-native-mmkv-storage"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-vector-icons-ionicons:
@@ -2553,6 +2591,8 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   hermes-engine: 7068e976238b29e97b3bafd09a994542af7d5c0b
+  MMKV: 7b5df6a8bf785c6705cc490c541b9d8a957c4a64
+  MMKVCore: 3f40b896e9ab522452df9df3ce983471aa2449ba
   RCT-Folly: 846fda9475e61ec7bcbf8a3fe81edfcaeb090669
   RCTDeprecation: ff787f6c860a1b97dd1bc27264b61d23ad1994da
   RCTRequired: 664eb8399ed8a83e26ab65af7c2ad390f7e61696
@@ -2586,6 +2626,7 @@ SPEC CHECKSUMS:
   React-logger: dce52a571ba0e0149c3f0fcc6866cbc0c8552c5e
   React-Mapbuffer: f5754c33877eaf36e4c76c613b35615a181c85c5
   React-microtasksnativemodule: 23df6374a3ac422d8c2927839bcaeed61fee3dad
+  react-native-mmkv-storage: 7ac16fe076d9db08283fb6478a46939d4790a409
   react-native-safe-area-context: 01f6d357d42395422eed7c3bfe715614728f2989
   react-native-vector-icons-ionicons: ad07e944a092a5cf71b8b569d8f5ce2bf674c415
   React-NativeModulesApple: e16d5c133019987285f001fbf1461a861e40426f
