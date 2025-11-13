@@ -1,14 +1,13 @@
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { AppNavigator } from './src/navigation';
 import { makeStyles, ThemeProvider } from './src/theme/ThemeContext';
 
 function AppContainer() {
-  // TODO: enable it later
-  // const isDarkMode = useColorScheme() === 'dark';
-  const isDarkMode = true;
+  // TODO: revise this to correct logic, testing for dark mode temp
+  const isDarkMode = useColorScheme() !== 'dark';
   const styles = useStyles();
 
   return (
@@ -21,9 +20,11 @@ function AppContainer() {
 
 function App() {
   return (
-    <ThemeProvider>
-      <AppContainer />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <AppContainer />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
 

@@ -2,11 +2,13 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
 
-import { makeStyles, padding, useTheme } from 'theme/index';
+import { padding } from 'theme/spacings';
+import { makeStyles, useTheme } from 'theme/ThemeContext';
 
 type ButtonProps = {
   text: string;
   type?: 'primary' | 'secondary';
+  radius?: 'full' | 'small';
   icon?: { name: IoniconsIconName; size?: number; color?: string };
   onPress: () => void;
 };
@@ -16,10 +18,11 @@ export const Button: React.FC<ButtonProps> = ({
   text,
   icon,
   type = 'primary',
+  radius = 'small',
   onPress = () => {},
 }) => {
   const isPrimary = type === 'primary';
-  const styles = useStyles({ isPrimary });
+  const styles = useStyles({ isPrimary, radius });
   const { colors, fontSizes } = useTheme();
 
   const iconSize = icon?.size ?? fontSizes.title;
@@ -36,14 +39,14 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 const useStyles = makeStyles(
-  ({ colors, fontWeights, spacings }, props?: { isPrimary: boolean }) => ({
+  ({ colors, fontWeights, spacings, fontSizes }, props?: { isPrimary: boolean, radius: 'full' | 'small' }) => ({
     container: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
       padding: padding.large,
       width: '100%',
-      borderRadius: props?.isPrimary ? 40 : 15,
+      borderRadius: props?.isPrimary || props?.radius === 'full' ? 40 : 15,
       borderWidth: props?.isPrimary ? 0 : 1,
       borderColor: props?.isPrimary ? 'transparent' : colors.primary,
       backgroundColor: props?.isPrimary ? colors.primary : colors.background,

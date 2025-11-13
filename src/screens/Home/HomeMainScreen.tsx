@@ -1,8 +1,8 @@
 import React from 'react';
-import { Image, ScrollView } from 'react-native';
+import { Image } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { Body, Button, Header } from 'components/index';
+import { Body, Button, Header, ScrollViewContainer } from 'components/index';
 import { HomeStackParamList } from 'navigation/types';
 import { makeStyles } from 'theme/ThemeContext';
 
@@ -14,11 +14,7 @@ export const HomeMainScreen: React.FC<Props> = () => {
   const styles = useStyles();
 
   return (
-    <ScrollView
-      style={styles.scrollView}
-      contentContainerStyle={styles.container}
-      contentInset={{ bottom: 60 }}
-    >
+    <ScrollViewContainer>
       <Button
         type="secondary"
         text="Start your property search"
@@ -33,20 +29,11 @@ export const HomeMainScreen: React.FC<Props> = () => {
         text="All the critical numbers to unlock opportunities you didn't know existed"
       />
       <Button text="Add property" icon={{ name: 'add-outline' }} onPress={() => {}} />
-    </ScrollView>
+    </ScrollViewContainer>
   );
 };
 
-const useStyles = makeStyles(({ colors, padding, margin }) => ({
-  scrollView: {
-    backgroundColor: colors.background,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    padding: padding.large,
-    backgroundColor: colors.background,
-  },
+const useStyles = makeStyles(({ margin }) => ({
   text: {
     textAlign: 'center',
     marginBottom: margin.xlarge,

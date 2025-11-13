@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { makeStyles } from 'theme/index';
 
@@ -9,9 +9,14 @@ type SpacingProps = {
   size?: SpacingSize;
 };
 
-export const Spacing: React.FC<SpacingProps> = ({ size = 'md' }) => {
+export const SectionSpacing: React.FC<SpacingProps> = ({ size = 'md' }) => {
   const styles = useStyles({ size });
-  return <View style={styles.container} />;
+  return <View style={styles.section} />;
+};
+
+export const LineSpacing: React.FC<SpacingProps> = ({ size = 'md' }) => {
+  const styles = useStyles({ size });
+  return <View style={styles.line} />;
 };
 
 const spacingSizes = {
@@ -20,10 +25,16 @@ const spacingSizes = {
   lg: 48,
 };
 
-const useStyles = makeStyles((_, props?: { size: SpacingSize }) => ({
-  container: {
+const useStyles = makeStyles(({ colors, margin }, props?: { size: SpacingSize }) => ({
+  section: {
     height: spacingSizes[props?.size ?? 'md'],
     width: '100%',
-    backgroundColor: 'blue',
+    backgroundColor: 'transparent',
+  },
+  line: {
+    height: 1,
+    width: '100%',
+    backgroundColor: colors.line,
+    marginVertical: margin.xlarge,
   },
 }));

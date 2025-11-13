@@ -40,6 +40,6 @@ export const makeStyles = <T extends StyleSheet.NamedStyles<any>, P>(
 ) => {
   return (props?: P): T => {
     const theme = useTheme();
-    return useMemo(() => StyleSheet.create(stylesFn(theme, props)), [theme]) as T;
+    return useMemo(() => StyleSheet.create(stylesFn(theme, props)), [theme, props]) as T;
   };
 };

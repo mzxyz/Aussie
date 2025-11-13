@@ -2,6 +2,7 @@ export const lightColors = {
   primary: '#2563EB',
   secondary: '#64748B',
   highlight: '#4b1f68',
+  line: '#4b4949',
 
   background: '#FFFFFF',
   backgroundSecondary: '#f5f5f5',
@@ -15,6 +16,7 @@ export const darkColors = {
   primary: '#b2b1ef',
   secondary: '#64748B',
   highlight: '#4b1f68',
+  line: '#4b4949',
 
   background: '#151413',
   backgroundSecondary: '#1b1a1a',

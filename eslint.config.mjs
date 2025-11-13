@@ -9,7 +9,6 @@ import prettierConfig from 'eslint-config-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 export default [
-  // Global ignores
   {
     ignores: [
       'node_modules/**',
@@ -23,8 +22,6 @@ export default [
       'metro.config.js',
     ],
   },
-
-  // TypeScript and React files
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
@@ -61,24 +58,13 @@ export default [
       },
     },
     rules: {
-      // TypeScript recommended rules
       ...tseslint.configs.recommended.rules,
-
-      // React recommended rules
       ...reactPlugin.configs.recommended.rules,
       ...reactPlugin.configs['jsx-runtime'].rules,
-      // Disable prop-types for TypeScript files (TypeScript handles type checking)
       'react/prop-types': 'off',
-
-      // React Hooks rules
       ...reactHooksPlugin.configs.recommended.rules,
-
-      // React Native rules
       ...reactNativePlugin.configs.all.rules,
-
-      // Import rules
       ...importPlugin.configs.recommended.rules,
-      // Allow require() for static assets while keeping other CommonJS imports blocked
       '@typescript-eslint/no-require-imports': [
         'error',
         {
@@ -93,20 +79,13 @@ export default [
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
-
-      // Prettier integration
       'prettier/prettier': 'error',
-
-      // Disable conflicting rules (prettier config)
       ...prettierConfig.rules,
     },
   },
-
-  // Override for JS/TS/TSX files (excluding JSX) - uses simple-import-sort
   {
     files: ['**/*.{js,ts,tsx}'],
     rules: {
-      // Disable import/order for files using simple-import-sort
       'import/order': 'off',
       'simple-import-sort/imports': [
         'error',
