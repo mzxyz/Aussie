@@ -1,28 +1,32 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { HomeStackParamList } from '../../navigation/types';
+import { makeStyles } from '../../theme';
+import { Button } from '../../components';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'HomeMain'>;
 
 export const HomeMainScreen: React.FC<Props> = () => {
+  const styles = useStyles();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
+      <Button
+        type="secondary"
+        text="Start your property search"
+        icon={{ name: 'search' }}
+        onPress={() => {}}
+      />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(({ colors, padding }) => ({
   container: {
-    alignItems: 'center',
-    backgroundColor: 'lightgray',
     flex: 1,
-    justifyContent: 'center',
-    padding: 20,
+    alignItems: 'center',
+    padding: padding.large,
+    backgroundColor: colors.background,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-});
+}));

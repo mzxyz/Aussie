@@ -7,6 +7,7 @@ export const lightColors = {
   textPrimary: '#1E293B',
   textSecondary: '#b9b9b9',
   textHighlight: '#2563EB',
+  textDark: '#1b1436',
 };
 
 export const darkColors = {
@@ -18,4 +19,5 @@ export const darkColors = {
   textPrimary: '#FFFFFF',
   textSecondary: '#b9b9b9',
   textHighlight: '#b2b1ef',
+  textDark: '#1b1436',
 };

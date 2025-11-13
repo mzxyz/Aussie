@@ -59,6 +59,8 @@ export default [
       // React recommended rules
       ...reactPlugin.configs.recommended.rules,
       ...reactPlugin.configs['jsx-runtime'].rules,
+      // Disable prop-types for TypeScript files (TypeScript handles type checking)
+      'react/prop-types': 'off',
 
       // React Hooks rules
       ...reactHooksPlugin.configs.recommended.rules,
