@@ -1,4 +1,9 @@
-import { StateCreator } from 'zustand';
+import { create, StateCreator } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+
+import { cacheKeys } from 'utils/localStorage';
+
+import { mmkvStorage } from './stateStorage';
 
 export type PreferenceState = {
   faceIdEnabled: boolean;
@@ -16,7 +21,7 @@ export type PreferenceSlice = PreferenceState & {
   reset: () => void;
 };
 
-export const preferenceInitialState: PreferenceState = {
+export const initialState: PreferenceState = {
   faceIdEnabled: false,
   hapticsEnabled: true,
   systemThemeEnabled: false,
@@ -28,12 +33,20 @@ export const createPreferenceSlice: StateCreator<
   [],
   PreferenceSlice
 > = (set, get) => ({
-  ...preferenceInitialState,
+  ...initialState,
   setFaceIdEnabled: enabled => set({ faceIdEnabled: enabled }),
   toggleFaceId: () => set({ faceIdEnabled: !get().faceIdEnabled }),
   setHapticsEnabled: enabled => set({ hapticsEnabled: enabled }),
   toggleHaptics: () => set({ hapticsEnabled: !get().hapticsEnabled }),
   setSystemThemeEnabled: enabled => set({ systemThemeEnabled: enabled }),
   toggleMatchSystemTheme: () => set({ systemThemeEnabled: !get().systemThemeEnabled }),
-  reset: () => set({ ...preferenceInitialState }),
+  reset: () => set({ ...initialState }),
 });
+
+export const usePreferenceStore = create<PreferenceSlice>()(
+  persist((...a) => createPreferenceSlice(...a), {
+    name: cacheKeys.preferenceStore,
+    storage: createJSONStorage(() => mmkvStorage),
+    version: 1,
+  }),
+);
