@@ -24,9 +24,9 @@ const dataSources = [
   { title: 'Extra repayments', link: '' },
 ];
 
-type Props = NativeStackScreenProps<FinancesStackParamList, 'FinancesMain'>;
+type Props = NativeStackScreenProps<FinancesStackParamList, 'Finances'>;
 
-export const FinancesMainScreen: React.FC<Props> = () => {
+export const FinancesScreen: React.FC<Props> = () => {
   const styles = useStyles();
   return (
     <ScrollViewContainer edge="vertical">

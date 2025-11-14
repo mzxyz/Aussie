@@ -4,12 +4,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, ParamListBase } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { AppointmentMainScreen } from 'screens/Appointment/AppointmentMainScreen';
-import { FinancesMainScreen } from 'screens/Finances/FinancesMainScreen';
+import { AppointmentScreen } from 'screens/Appointment/AppointmentScreen';
+import { FinancesScreen } from 'screens/Finances/FinancesScreen';
 import { HomeMainScreen } from 'screens/Home/HomeMainScreen';
 import { ProfileScreen } from 'screens/Home/ProfileScreen';
-import { MyBrokerMainScreen } from 'screens/MyBroker/MyBrokerMainScreen';
-import { PropertiesMainScreen } from 'screens/Properties/PropertiesMainScreen';
+import { MyBrokerScreen } from 'screens/MyBroker/MyBrokerScreen';
+import { PropertiesScreen } from 'screens/Properties/PropertiesScreen';
+import { linking } from 'services/deeplink';
 import { useTheme } from 'theme/ThemeContext';
 
 import { NavigationHeader } from './NavigationHeader';
@@ -66,14 +67,18 @@ const HomeStackNavigator = () => {
   return (
     <HomeStack.Navigator screenOptions={screenOptions}>
       <HomeStack.Screen
-        name="HomeMain"
+        name="Home"
         component={HomeMainScreen}
         options={createHeaderOptions('Home', {
           name: 'person-outline',
           onPress: navigation => navigation.navigate('Profile'),
         })}
       />
-      <HomeStack.Screen name="Profile" component={ProfileScreen} />
+      <HomeStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ title: '' }}
+      />
     </HomeStack.Navigator>
   );
 };
@@ -83,8 +88,8 @@ const FinancesStackNavigator = () => {
   return (
     <FinancesStack.Navigator screenOptions={screenOptions}>
       <FinancesStack.Screen
-        name="FinancesMain"
-        component={FinancesMainScreen}
+        name="Finances"
+        component={FinancesScreen}
         options={createHeaderOptions('My finances')}
       />
     </FinancesStack.Navigator>
@@ -96,8 +101,8 @@ const PropertiesStackNavigator = () => {
   return (
     <PropertiesStack.Navigator screenOptions={screenOptions}>
       <PropertiesStack.Screen
-        name="PropertiesMain"
-        component={PropertiesMainScreen}
+        name="Properties"
+        component={PropertiesScreen}
         options={createHeaderOptions('My properties')}
       />
     </PropertiesStack.Navigator>
@@ -109,8 +114,8 @@ const AppointmentStackNavigator = () => {
   return (
     <AppointmentStack.Navigator screenOptions={screenOptions}>
       <AppointmentStack.Screen
-        name="AppointmentMain"
-        component={AppointmentMainScreen}
+        name="Appointment"
+        component={AppointmentScreen}
         options={createHeaderOptions('My appointment')}
       />
     </AppointmentStack.Navigator>
@@ -122,9 +127,9 @@ const MyBrokerStackNavigator = () => {
   return (
     <MyBrokerStack.Navigator screenOptions={screenOptions}>
       <MyBrokerStack.Screen
-        name="MyBrokerMain"
-        component={MyBrokerMainScreen}
-        options={createHeaderOptions('My broker')}
+        name="MyBroker"
+        component={MyBrokerScreen}
+        options={createHeaderOptions('MyBroker')}
       />
     </MyBrokerStack.Navigator>
   );
@@ -151,7 +156,7 @@ const tabConfigs: {
     component: AppointmentStackNavigator,
   },
   {
-    name: 'My broker',
+    name: 'MyBroker',
     component: MyBrokerStackNavigator,
   },
 ];
@@ -173,7 +178,7 @@ const BottomTabsNavigator = () => {
 
 export const AppNavigator: React.FC = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <BottomTabsNavigator />
     </NavigationContainer>
   );

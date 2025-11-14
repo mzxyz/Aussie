@@ -4,13 +4,13 @@ Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It sho
 
 ## Screens
 
-| App | Home | Appointment|
-| --- | --- | --- |
-|![App](documents/assets/app.png) | ![Home screen](documents/assets/home.png) | ![Appointment screen](documents/assets/appointment.png) |
+| App                              | Home                                      | Appointment                                             |
+| -------------------------------- | ----------------------------------------- | ------------------------------------------------------- |
+| ![App](documents/assets/app.png) | ![Home screen](documents/assets/home.png) | ![Appointment screen](documents/assets/appointment.png) |
 
-| Finances - Dark | Finance - Light | Profile - Light |
-| --- | ---| --- |
-|![Finances dark screen](documents/assets/finances.png) | ![Finance light screen](documents/assets/light-mode-finances.png) | ![Profile - Light](documents/assets/light-mode-profile.PNG)|
+| Finances - Dark                                        | Finance - Light                                                   | Profile - Light                                             |
+| ------------------------------------------------------ | ----------------------------------------------------------------- | ----------------------------------------------------------- |
+| ![Finances dark screen](documents/assets/finances.png) | ![Finance light screen](documents/assets/light-mode-finances.png) | ![Profile - Light](documents/assets/light-mode-profile.PNG) |
 
 ## Highlights
 
@@ -18,7 +18,7 @@ Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It sho
 - **Design System:** Centralized theme with light/dark palettes, spacing/typography tokens, and a `makeStyles` helper to build component styles from the theme.
 - **Global State:** Zustand-powered root store with a composable preference slice for FaceID, haptics, and theme selection.
 - **Local Persistence:** `react-native-mmkv-storage` caches preference data through a JSON-backed storage adapter.
-- **Screens:** Draft UI implementations for Home, Finances, My Broker (profile), Properties, and Appointment flows.
+- **Screens:** Draft UI implementations for Home, Finances, MyBroker (profile), Properties, and Appointment flows.
 - **Testing:** Jest + React Native Testing Library configured for colocated component tests and store tests (with MMKV + icon mocks).
 - **Tooling:** ESLint, Prettier, and Husky-friendly npm scripts, plus a simple CI workflow that lints, formats, and tests on every push/PR.
 
@@ -69,6 +69,7 @@ src
 └── utils
     └── localStorage.ts
 ```
+
 ## Running test
 
 Run `yarn test`

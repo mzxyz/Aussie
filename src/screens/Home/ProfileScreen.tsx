@@ -10,11 +10,11 @@ import {
   SwitchCell,
   Title,
 } from 'components/index';
+import { useIsDarkMode } from 'hooks/preferenceHooks';
 import { HomeStackParamList } from 'navigation/types';
 import { usePreferenceStore } from 'stores/preferenceStore';
-import { makeStyles, useThemeContext } from 'theme/ThemeContext';
 import { darkTheme, lightTheme } from 'theme/theme';
-import { useIsDarkMode } from 'hooks/preferenceHooks';
+import { makeStyles, useThemeContext } from 'theme/ThemeContext';
 
 const datasource = [
   { title: 'Personal details', name: 'PersonalDetailsScreen' },

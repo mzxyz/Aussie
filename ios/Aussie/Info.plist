@@ -53,5 +53,16 @@
 	<array>
 		<string>Ionicons.ttf</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>mz.demo.aussie</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>aussie</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

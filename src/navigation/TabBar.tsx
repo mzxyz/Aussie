@@ -22,7 +22,7 @@ const iconMap: Record<string, string> = {
   Finances: 'stats-chart',
   Properties: 'storefront',
   Appointment: 'calendar',
-  'My broker': 'people',
+  MyBroker: 'people',
 };
 
 const TabItem: React.FC<TabIconProps> = ({ name, focused, navigation }) => {

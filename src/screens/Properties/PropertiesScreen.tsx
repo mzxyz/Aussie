@@ -6,9 +6,9 @@ import { Header, ScrollViewContainer } from 'components/index';
 import { PropertiesStackParamList } from 'navigation/types';
 import { makeStyles } from 'theme/ThemeContext';
 
-type Props = NativeStackScreenProps<PropertiesStackParamList, 'PropertiesMain'>;
+type Props = NativeStackScreenProps<PropertiesStackParamList, 'Properties'>;
 
-export const MyBrokerMainScreen: React.FC<Props> = () => {
+export const PropertiesScreen: React.FC<Props> = () => {
   const styles = useStyles();
   return (
     <ScrollViewContainer>

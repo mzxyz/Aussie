@@ -6,28 +6,28 @@ export type RootTabParamList = {
   Finances: NavigatorScreenParams<FinancesStackParamList>;
   Properties: NavigatorScreenParams<PropertiesStackParamList>;
   Appointment: NavigatorScreenParams<AppointmentStackParamList>;
-  'My broker': NavigatorScreenParams<MyBrokerStackParamList>;
+  MyBroker: NavigatorScreenParams<MyBrokerStackParamList>;
 };
 
 export type HomeStackParamList = {
-  HomeMain: undefined;
+  Home: undefined;
   Profile: undefined;
 };
 
 export type FinancesStackParamList = {
-  FinancesMain: undefined;
+  Finances: undefined;
 };
 
 export type PropertiesStackParamList = {
-  PropertiesMain: undefined;
+  Properties: undefined;
 };
 
 export type AppointmentStackParamList = {
-  AppointmentMain: undefined;
+  Appointment: undefined;
 };
 
 export type MyBrokerStackParamList = {
-  MyBrokerMain: undefined;
+  MyBroker: undefined;
 };
 
 export type Navigation<T extends ParamListBase> = NativeStackNavigationProp<T>;
