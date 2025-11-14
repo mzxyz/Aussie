@@ -16,8 +16,6 @@ export const ActionCell: React.FC<ActionCellProps> = ({ title, onPress, testID }
 
   return (
     <TouchableOpacity
-      accessibilityRole="button"
-      accessibilityLabel={title}
       testID={testID ?? 'action-cell'}
       style={styles.container}
       onPress={onPress}
@@ -30,15 +28,16 @@ export const ActionCell: React.FC<ActionCellProps> = ({ title, onPress, testID }
 
 const useStyles = makeStyles(({ colors, margin, fontSizes, fontWeights }) => ({
   container: {
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: colors.line,
-    paddingVertical: margin.xlarge,
+    paddingVertical: margin.large + margin.small,
   },
   text: {
-    fontSize: fontSizes.body,
+    fontSize: fontSizes.small,
     color: colors.textPrimary,
     fontWeight: fontWeights.bold,
   },

@@ -1,4 +1,5 @@
-import { NavigatorScreenParams } from '@react-navigation/native';
+import { NavigatorScreenParams, ParamListBase } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type RootTabParamList = {
   Home: NavigatorScreenParams<HomeStackParamList>;
@@ -10,6 +11,7 @@ export type RootTabParamList = {
 
 export type HomeStackParamList = {
   HomeMain: undefined;
+  Profile: undefined;
 };
 
 export type FinancesStackParamList = {
@@ -28,8 +30,4 @@ export type MyBrokerStackParamList = {
   MyBrokerMain: undefined;
 };
 
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootTabParamList {}
-  }
-}
+export type Navigation<T extends ParamListBase> = NativeStackNavigationProp<T>;

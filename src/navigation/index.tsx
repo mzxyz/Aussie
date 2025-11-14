@@ -1,12 +1,13 @@
 import React from 'react';
 import { IoniconsIconName } from '@react-native-vector-icons/ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, ParamListBase } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppointmentMainScreen } from 'screens/Appointment/AppointmentMainScreen';
 import { FinancesMainScreen } from 'screens/Finances/FinancesMainScreen';
 import { HomeMainScreen } from 'screens/Home/HomeMainScreen';
+import { ProfileScreen } from 'screens/Home/ProfileScreen';
 import { MyBrokerMainScreen } from 'screens/MyBroker/MyBrokerMainScreen';
 import { PropertiesMainScreen } from 'screens/Properties/PropertiesMainScreen';
 import { useTheme } from 'theme/ThemeContext';
@@ -18,6 +19,7 @@ import {
   FinancesStackParamList,
   HomeStackParamList,
   MyBrokerStackParamList,
+  Navigation,
   PropertiesStackParamList,
   RootTabParamList,
 } from './types';
@@ -29,12 +31,23 @@ const PropertiesStack = createNativeStackNavigator<PropertiesStackParamList>();
 const AppointmentStack = createNativeStackNavigator<AppointmentStackParamList>();
 const MyBrokerStack = createNativeStackNavigator<MyBrokerStackParamList>();
 
-// Helper function to create header options
-const createHeaderOptions = (
+const createHeaderOptions = <T extends ParamListBase>(
   title: string,
-  rightIcon?: { name: IoniconsIconName; onPress: () => void },
+  rightIcon?: {
+    name: IoniconsIconName;
+    onPress: (navigation: Navigation<T>) => void;
+  },
 ) => ({
-  header: () => <NavigationHeader title={title} rightIcon={rightIcon} />,
+  header: ({ navigation }: { navigation: Navigation<T> }) => (
+    <NavigationHeader
+      title={title}
+      rightIcon={
+        rightIcon
+          ? { name: rightIcon.name, onPress: () => rightIcon.onPress(navigation) }
+          : undefined
+      }
+    />
+  ),
 });
 
 const useScreenOptions = () => {
@@ -55,8 +68,12 @@ const HomeStackNavigator = () => {
       <HomeStack.Screen
         name="HomeMain"
         component={HomeMainScreen}
-        options={createHeaderOptions('Home')}
+        options={createHeaderOptions('Home', {
+          name: 'person-outline',
+          onPress: navigation => navigation.navigate('Profile'),
+        })}
       />
+      <HomeStack.Screen name="Profile" component={ProfileScreen} />
     </HomeStack.Navigator>
   );
 };

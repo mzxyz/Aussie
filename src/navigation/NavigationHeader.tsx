@@ -7,7 +7,7 @@ import { makeStyles, useTheme } from 'theme/index';
 type CustomHeaderProps = {
   title: string;
   rightIcon?: {
-    name: IoniconsIconName;
+    name: string;
     onPress: () => void;
   };
 };
@@ -24,7 +24,11 @@ export const NavigationHeader: React.FC<CustomHeaderProps> = ({ title, rightIcon
       </View>
       {rightIcon && (
         <TouchableOpacity onPress={rightIcon.onPress} style={styles.rightIcon}>
-          <Icon name={rightIcon.name} size={24} color={colors.textPrimary} />
+          <Icon
+            name={rightIcon.name as IoniconsIconName}
+            color={colors.textPrimary}
+            size={24}
+          />
         </TouchableOpacity>
       )}
     </View>

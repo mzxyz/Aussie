@@ -4,14 +4,13 @@ Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It sho
 
 ## Screens
 
-| App | Home |
-| --- | --- |
-|![App](documents/assets/app.png) | ![Home screen](documents/assets/home.png) | 
+| App | Home | Appointment|
+| --- | --- | --- |
+|![App](documents/assets/app.png) | ![Home screen](documents/assets/home.png) | ![Appointment screen](documents/assets/appointment.png) |
 
-| Finances | Appointment |
-| --- | ---|
-|![Finances screen](documents/assets/finances.png) | ![Appointment screen](documents/assets/appointment.png) |
-
+| Finances - Dark | Finance - Light | Profile - Light |
+| --- | ---| --- |
+|![Finances dark screen](documents/assets/finances.png) | ![Finance light screen](documents/assets/light-mode-finances.png) | ![Profile - Light](documents/assets/light-mode-profile.PNG)|
 
 ## Highlights
 

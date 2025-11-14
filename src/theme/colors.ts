@@ -1,15 +1,15 @@
 export const lightColors = {
   primary: '#2563EB',
-  secondary: '#64748B',
-  highlight: '#4b1f68',
-  line: '#4b4949',
+  secondary: '#38BDF8',
+  highlight: '#F97316',
+  line: '#E2E8F0',
 
-  background: '#FFFFFF',
-  backgroundSecondary: '#f5f5f5',
-  textPrimary: '#1E293B',
-  textSecondary: '#b9b9b9',
+  background: '#F8FAFC',
+  backgroundSecondary: '#FFFFFF',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
   textHighlight: '#2563EB',
-  textDark: '#1b1436',
+  textDark: '#F8FAFC',
 };
 
 export const darkColors = {
