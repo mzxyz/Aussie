@@ -1,9 +1,4 @@
-import { create, StateCreator } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-
-import { cacheKeys } from 'utils/localStorage';
-
-import { mmkvStorage } from './stateStorage';
+import { StateCreator } from 'zustand';
 
 export type PreferenceState = {
   faceIdEnabled: boolean;
@@ -11,7 +6,7 @@ export type PreferenceState = {
   systemThemeEnabled: boolean;
 };
 
-export type PreferenceSlice = {
+export type PreferenceSlice = PreferenceState & {
   setFaceIdEnabled: (enabled: boolean) => void;
   toggleFaceId: () => void;
   setHapticsEnabled: (enabled: boolean) => void;
@@ -19,32 +14,26 @@ export type PreferenceSlice = {
   setSystemThemeEnabled: (enabled: boolean) => void;
   toggleMatchSystemTheme: () => void;
   reset: () => void;
-} & PreferenceState;
+};
 
-export const initialState: PreferenceState = {
+export const preferenceInitialState: PreferenceState = {
   faceIdEnabled: false,
   hapticsEnabled: true,
   systemThemeEnabled: false,
 };
 
-const createPreferenceSlice: StateCreator<PreferenceSlice, [], [], PreferenceSlice> = (
-  set,
-  get,
-) => ({
-  ...initialState,
+export const createPreferenceSlice: StateCreator<
+  PreferenceSlice,
+  [],
+  [],
+  PreferenceSlice
+> = (set, get) => ({
+  ...preferenceInitialState,
   setFaceIdEnabled: enabled => set({ faceIdEnabled: enabled }),
   toggleFaceId: () => set({ faceIdEnabled: !get().faceIdEnabled }),
   setHapticsEnabled: enabled => set({ hapticsEnabled: enabled }),
   toggleHaptics: () => set({ hapticsEnabled: !get().hapticsEnabled }),
   setSystemThemeEnabled: enabled => set({ systemThemeEnabled: enabled }),
   toggleMatchSystemTheme: () => set({ systemThemeEnabled: !get().systemThemeEnabled }),
-  reset: () => set({ ...initialState }),
+  reset: () => set({ ...preferenceInitialState }),
 });
-
-export const usePreferenceStore = create<PreferenceSlice>()(
-  persist((...a) => createPreferenceSlice(...a), {
-    name: cacheKeys.preferenceStore,
-    storage: createJSONStorage(() => mmkvStorage),
-    version: 1,
-  }),
-);

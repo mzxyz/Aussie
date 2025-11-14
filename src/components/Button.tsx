@@ -13,7 +13,6 @@ type ButtonProps = {
   onPress: () => void;
 };
 
-// the border radius can be full round or small round.
 export const Button: React.FC<ButtonProps> = ({
   text,
   icon,

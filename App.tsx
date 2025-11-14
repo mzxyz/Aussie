@@ -15,7 +15,7 @@ function AppContainer() {
 
   return (
     <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'dark-content' : 'light-content'} />
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AppNavigator />
     </SafeAreaView>
   );

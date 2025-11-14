@@ -1,6 +1,6 @@
 import { useColorScheme } from 'react-native';
 
-import { usePreferenceStore } from '../stores/index';
+import { usePreferenceStore } from '../store';
 
 export const useIsDarkMode = () => {
   const systemScheme = useColorScheme();
