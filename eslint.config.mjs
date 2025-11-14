@@ -47,7 +47,8 @@ export default [
       react: {
         version: 'detect',
       },
-      'import/internal-regex': '^@(?:api|components|hooks|navigation|screens|stores|theme|types|utils)(/|$)',
+      'import/internal-regex':
+        '^@(?:api|components|hooks|navigation|screens|stores|theme|types|utils)(/|$)',
       'import/resolver': {
         typescript: {
           project: './tsconfig.json',
@@ -68,7 +69,7 @@ export default [
       '@typescript-eslint/no-require-imports': [
         'error',
         {
-          allow: ['\\.(png|jpg|jpeg|gif|svg|webp)$'],
+          allow: ['\\.(png|jpg|jpeg|gif|svg|webp|ts)$'],
         },
       ],
       'import/order': [
@@ -92,7 +93,9 @@ export default [
         {
           groups: [
             ['^react', '^@?\\w'],
-            ['^(components|hooks|navigation|screens|stores|theme|types|utils|services)(/.*|$)'],
+            [
+              '^(components|hooks|navigation|screens|stores|theme|types|utils|services)(/.*|$)',
+            ],
             [
               '^\\.\\.(?!/?$)',
               '^\\.\\./?$',
