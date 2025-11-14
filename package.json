@@ -5,8 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "start": "react-native start --reset-cache",
     "test": "jest"
   },
