@@ -8,11 +8,13 @@ type Edge = 'horizontal' | 'vertical' | 'both';
 
 type ScrollViewContainerProps = PropsWithChildren<{
   edge?: Edge;
+  testID?: string;
 }>;
 
 export const ScrollViewContainer: React.FC<ScrollViewContainerProps> = ({
   children,
   edge = 'both',
+  testID,
 }) => {
   const styles = useStyles({ edge });
   const tabBarHeight = useBottomTabBarHeight();
@@ -20,6 +22,7 @@ export const ScrollViewContainer: React.FC<ScrollViewContainerProps> = ({
 
   return (
     <ScrollView
+      testID={testID}
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       contentInset={{ bottom: bottomInset }}

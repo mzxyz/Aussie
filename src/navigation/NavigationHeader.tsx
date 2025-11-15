@@ -1,7 +1,8 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
 
+import { Logo } from 'components/Logo';
 import { makeStyles, useTheme } from 'theme/index';
 
 type CustomHeaderProps = {
@@ -19,11 +20,15 @@ export const NavigationHeader: React.FC<CustomHeaderProps> = ({ title, rightIcon
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
-        <Image source={require('../assets/images/logo.png')} style={styles.logo} />
+        <Logo style={styles.logo} />
         <Text style={styles.title}>{title}</Text>
       </View>
       {rightIcon && (
-        <TouchableOpacity onPress={rightIcon.onPress} style={styles.rightIcon}>
+        <TouchableOpacity
+          testID={`header-icon-${rightIcon.name}`}
+          onPress={rightIcon.onPress}
+          style={styles.rightIcon}
+        >
           <Icon
             name={rightIcon.name as IoniconsIconName}
             color={colors.textPrimary}

@@ -25,5 +25,5 @@ module.exports = {
       '|@react-native-vector-icons' +
       ')/)',
   ],
-  testPathIgnorePatterns: ['/node_modules/', '/android/', '/ios/'],
+  testPathIgnorePatterns: ['/node_modules/', '/android/', '/ios/', '/e2e/'],
 };

@@ -10,7 +10,13 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "start": "react-native start --reset-cache",
-    "test": "jest"
+    "test": "jest",
+    "detox:build:ios": "detox build --configuration ios.sim.debug",
+    "detox:build:android": "detox build --configuration android.emu.debug",
+    "detox:test:ios": "detox test --configuration ios.sim.debug",
+    "detox:test:android": "detox test --configuration android.emu.debug",
+    "detox:test": "detox test --configuration ios.sim.debug",
+    "detox:clean": "detox clean-framework-cache && detox clean-framework-cache --configuration android.emu.debug"
   },
   "dependencies": {
     "@react-native-vector-icons/ionicons": "^12.3.0",
@@ -57,6 +63,8 @@
     "eslint-plugin-react-native": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "jest": "^29.6.3",
+    "jest-circus": "29.6.3",
+    "detox": "20.43.0",
     "prettier": "^3.6.2",
     "react-test-renderer": "19.1.0",
     "typescript": "5.0.4"

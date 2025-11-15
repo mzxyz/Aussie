@@ -29,7 +29,7 @@ type Props = NativeStackScreenProps<FinancesStackParamList, 'Finances'>;
 export const FinancesScreen: React.FC<Props> = () => {
   const styles = useStyles();
   return (
-    <ScrollViewContainer edge="vertical">
+    <ScrollViewContainer testID="screen-Finances" edge="vertical">
       <View style={styles.headerContainer}>
         <Title text="Track your home loan" />
         <Subtitle

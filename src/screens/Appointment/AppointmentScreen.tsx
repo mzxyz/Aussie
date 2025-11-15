@@ -11,7 +11,7 @@ type Props = NativeStackScreenProps<AppointmentStackParamList, 'Appointment'>;
 export const AppointmentScreen: React.FC<Props> = () => {
   const styles = useStyles();
   return (
-    <ScrollViewContainer>
+    <ScrollViewContainer testID="screen-Appointment">
       <View style={styles.container}>
         <Image
           source={require('../../assets/images/calendar.png')}

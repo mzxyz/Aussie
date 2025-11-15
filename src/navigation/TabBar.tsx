@@ -34,6 +34,7 @@ const TabItem: React.FC<TabIconProps> = ({ name, focused, navigation }) => {
   return (
     <TouchableOpacity
       key={name}
+      testID={`tab-${name}`}
       onPress={() => navigation.navigate(name)}
       style={styles.tab}
     >
@@ -49,7 +50,7 @@ const TabItem: React.FC<TabIconProps> = ({ name, focused, navigation }) => {
 export const TabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
   const styles = useStyles();
   return (
-    <View style={styles.container}>
+    <View testID="tab-bar" style={styles.container}>
       {state.routes.map((route, index) => (
         <TabItem
           key={route.key}
