@@ -1,3 +1,4 @@
+
 # Aussie React Native Demo
 
 Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It showcases navigation, theming, global state management, persisted storage, testing, and CI wiring that you can expand into a production-ready app.
@@ -25,6 +26,13 @@ Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It sho
 - **Animations:** `react-native-reanimated` implemented for smooth button interactions with scale and opacity animations matching the original app design.
 - **Tooling:** ESLint, Prettier, and Husky-friendly npm scripts, plus a simple CI workflow that lints, formats, and tests on every push/PR.
 
+### Deeplink
+
+https://github.com/user-attachments/assets/50281c92-98a9-46b8-a437-d4ec33cf8b76
+
+### Animated button
+
+https://github.com/user-attachments/assets/4f486684-444d-47dc-89a6-6fde561a81f3
 
 ## Project Structure
 
