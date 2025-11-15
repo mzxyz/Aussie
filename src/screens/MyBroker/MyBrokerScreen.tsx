@@ -3,10 +3,10 @@ import { View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { Header, ScrollViewContainer } from 'components/index';
-import { PropertiesStackParamList } from 'navigation/types';
+import { MyBrokerStackParamList } from 'navigation/types';
 import { makeStyles } from 'theme/ThemeContext';
 
-type Props = NativeStackScreenProps<PropertiesStackParamList, 'Properties'>;
+type Props = NativeStackScreenProps<MyBrokerStackParamList, 'MyBroker'>;
 
 export const MyBrokerScreen: React.FC<Props> = () => {
   const styles = useStyles();

@@ -8,9 +8,9 @@ import { makeStyles } from 'theme/ThemeContext';
 
 import { AppointmentCell } from './components/AppointmentCell';
 
-type Props = NativeStackScreenProps<HomeStackParamList, 'HomeMain'>;
+type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
-export const HomeMainScreen: React.FC<Props> = () => {
+export const HomeScreen: React.FC<Props> = () => {
   const styles = useStyles();
 
   return (

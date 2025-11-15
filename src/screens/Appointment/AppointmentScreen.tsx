@@ -3,10 +3,10 @@ import { Image, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { Body, Button, Header, ScrollViewContainer } from 'components/index';
-import { PropertiesStackParamList } from 'navigation/types';
+import { AppointmentStackParamList } from 'navigation/types';
 import { makeStyles } from 'theme/ThemeContext';
 
-type Props = NativeStackScreenProps<PropertiesStackParamList, 'Properties'>;
+type Props = NativeStackScreenProps<AppointmentStackParamList, 'Appointment'>;
 
 export const AppointmentScreen: React.FC<Props> = () => {
   const styles = useStyles();

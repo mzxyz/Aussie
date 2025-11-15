@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppointmentScreen } from 'screens/Appointment/AppointmentScreen';
 import { FinancesScreen } from 'screens/Finances/FinancesScreen';
-import { HomeMainScreen } from 'screens/Home/HomeMainScreen';
+import { HomeScreen } from 'screens/Home/HomeScreen';
 import { ProfileScreen } from 'screens/Home/ProfileScreen';
 import { MyBrokerScreen } from 'screens/MyBroker/MyBrokerScreen';
 import { PropertiesScreen } from 'screens/Properties/PropertiesScreen';
@@ -68,7 +68,7 @@ const HomeStackNavigator = () => {
     <HomeStack.Navigator screenOptions={screenOptions}>
       <HomeStack.Screen
         name="Home"
-        component={HomeMainScreen}
+        component={HomeScreen}
         options={createHeaderOptions('Home', {
           name: 'person-outline',
           onPress: navigation => navigation.navigate('Profile'),
