@@ -137,7 +137,7 @@ const MyBrokerStackNavigator = () => {
 
 const tabConfigs: {
   name: keyof RootTabParamList;
-  component: React.ComponentType<any>;
+  component: React.ComponentType<ParamListBase>;
 }[] = [
   {
     name: 'Home',

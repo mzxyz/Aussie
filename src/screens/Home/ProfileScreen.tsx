@@ -10,7 +10,6 @@ import {
   SwitchCell,
   Title,
 } from 'components/index';
-import { useIsDarkMode } from 'hooks/preferenceHooks';
 import { HomeStackParamList } from 'navigation/types';
 import { usePreferenceStore } from 'stores/preferenceStore';
 import { darkTheme, lightTheme } from 'theme/theme';

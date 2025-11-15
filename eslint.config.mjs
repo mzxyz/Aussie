@@ -72,6 +72,7 @@ export default [
           allow: ['\\.(png|jpg|jpeg|gif|svg|webp|ts)$'],
         },
       ],
+      '@typescript-eslint/no-require-imports': 'off',
       'import/order': [
         'error',
         {

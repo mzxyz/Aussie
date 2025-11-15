@@ -42,7 +42,7 @@ export const useTheme = () => {
   return context.theme;
 };
 
-export const makeStyles = <T extends StyleSheet.NamedStyles<any>, P>(
+export const makeStyles = <T extends StyleSheet.NamedStyles<T>, P = void>(
   stylesFn: (theme: Theme, props?: P) => T,
 ) => {
   return (props?: P): T => {
