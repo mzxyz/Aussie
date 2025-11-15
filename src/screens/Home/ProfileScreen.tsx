@@ -43,7 +43,7 @@ export const ProfileScreen: React.FC<Props> = () => {
   };
 
   return (
-    <ScrollViewContainer>
+    <ScrollViewContainer testID="screen-Profile">
       <View style={styles.avatar}>
         <Header text="MZ" />
       </View>

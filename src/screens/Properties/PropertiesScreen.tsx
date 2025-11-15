@@ -11,7 +11,7 @@ type Props = NativeStackScreenProps<PropertiesStackParamList, 'Properties'>;
 export const PropertiesScreen: React.FC<Props> = () => {
   const styles = useStyles();
   return (
-    <ScrollViewContainer>
+    <ScrollViewContainer testID="screen-Properties">
       <View style={styles.container}>
         <Header style={styles.text} text="Coming soon!" />
       </View>

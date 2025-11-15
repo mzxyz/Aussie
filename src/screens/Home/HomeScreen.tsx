@@ -14,12 +14,13 @@ export const HomeScreen: React.FC<Props> = () => {
   const styles = useStyles();
 
   return (
-    <ScrollViewContainer>
+    <ScrollViewContainer testID="screen-Home">
       <Button
         type="secondary"
         text="Start your property search"
         icon={{ name: 'search' }}
         onPress={() => {}}
+        opacityEnabled={false}
       />
       <AppointmentCell onPress={() => {}} />
       <Image source={require('../../assets/images/home.png')} style={styles.image} />

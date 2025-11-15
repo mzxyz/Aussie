@@ -11,7 +11,7 @@ type Props = NativeStackScreenProps<MyBrokerStackParamList, 'MyBroker'>;
 export const MyBrokerScreen: React.FC<Props> = () => {
   const styles = useStyles();
   return (
-    <ScrollViewContainer>
+    <ScrollViewContainer testID="screen-MyBroker">
       <View style={styles.container}>
         <Header style={styles.text} text="Coming soon!" />
       </View>
