@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React, { useCallback, useMemo } from 'react';
+import { Animated, Pressable, Text } from 'react-native';
 import { Ionicons as Icon, IoniconsIconName } from '@react-native-vector-icons/ionicons';
 
 import { padding } from 'theme/spacings';
@@ -13,6 +13,8 @@ type ButtonProps = {
   onPress: () => void;
 };
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 export const Button: React.FC<ButtonProps> = ({
   text,
   icon,
@@ -23,17 +25,35 @@ export const Button: React.FC<ButtonProps> = ({
   const isPrimary = type === 'primary';
   const styles = useStyles({ isPrimary, radius });
   const { colors, fontSizes } = useTheme();
+  const scale = useMemo(() => new Animated.Value(1), []);
 
   const iconSize = icon?.size ?? fontSizes.title;
   const iconColor = isPrimary ? colors.textDark : colors.textHighlight;
 
+  const animateTo = useCallback(
+    (value: number) => {
+      Animated.spring(scale, {
+        toValue: value,
+        useNativeDriver: true,
+        speed: 20,
+        bounciness: 6,
+      }).start();
+    },
+    [scale],
+  );
+
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <AnimatedPressable
+      style={[styles.container, { transform: [{ scale }] }]}
+      onPress={onPress}
+      onPressIn={() => animateTo(0.9)}
+      onPressOut={() => animateTo(1)}
+    >
       {icon && <Icon name={icon.name} size={iconSize} color={iconColor} />}
       <Text style={styles.text} numberOfLines={1}>
         {text}
       </Text>
-    </TouchableOpacity>
+    </AnimatedPressable>
   );
 };
 
