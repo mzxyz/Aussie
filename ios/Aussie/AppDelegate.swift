@@ -8,7 +8,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   var reactNativeDelegate: ReactNativeDelegate?
-  var reactNativeFactory: RCTReactNativeFactory?
+  private var _reactNativeFactory: RCTReactNativeFactory?
+
+  // Expose reactNativeFactory for Detox compatibility
+  @objc var reactNativeFactory: RCTReactNativeFactory? {
+    return _reactNativeFactory
+  }
 
   func application(
     _ application: UIApplication,
@@ -19,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     delegate.dependencyProvider = RCTAppDependencyProvider()
 
     reactNativeDelegate = delegate
-    reactNativeFactory = factory
+    _reactNativeFactory = factory
 
     window = UIWindow(frame: UIScreen.main.bounds)
 
