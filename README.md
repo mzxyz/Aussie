@@ -20,7 +20,11 @@ Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It sho
 - **Local Persistence:** `react-native-mmkv-storage` caches preference data through a JSON-backed storage adapter.
 - **Screens:** Draft UI implementations for Home, Finances, MyBroker (profile), Properties, and Appointment flows.
 - **Testing:** Jest + React Native Testing Library configured for colocated component tests and store tests (with MMKV + icon mocks).
+- **E2E Testing:** Detox integrated for end-to-end testing with comprehensive test coverage for all 5 tabs and 6 screens.
+- **Deep Linking:** Schema URL support (`aussie://`) with React Navigation linking configuration for seamless navigation to specific screens.
+- **Animations:** `react-native-reanimated` implemented for smooth button interactions with scale and opacity animations matching the original app design.
 - **Tooling:** ESLint, Prettier, and Husky-friendly npm scripts, plus a simple CI workflow that lints, formats, and tests on every push/PR.
+
 
 ## Project Structure
 
@@ -70,8 +74,23 @@ src
     └── localStorage.ts
 ```
 
-## Running test
+## Running Tests
 
+### Unit Tests
 Run `yarn test`
 
-![Home screen](documents/assets/unit-test.png)
+||
+| -- |
+|![Home screen](documents/assets/unit-test.png)|
+
+### E2E Tests
+Run Detox end-to-end tests on iOS:
+```bash
+yarn run detox:test:ios
+```
+
+E2E tests cover:
+- App launch and basic UI verification
+- Tab navigation across all 5 tabs
+- Screen content and interactions for all 6 screens
+- Navigation flows including nested screens (e.g., Home → Profile)

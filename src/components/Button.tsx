@@ -45,19 +45,16 @@ export const Button: React.FC<ButtonProps> = ({
   const iconSize = icon?.size ?? fontSizes.title;
   const iconColor = isPrimary ? colors.textDark : colors.textHighlight;
 
-  const animatedStyle = useAnimatedStyle(
-    () => {
-      const timingConfig = { duration: 120, easing: Easing.linear };
-      const targetScale = isPressed.value ? animationValues.scale : 1;
-      const targetOpacity = isPressed.value ? animationValues.opacity : 1;
+  const animatedStyle = useAnimatedStyle(() => {
+    const timingConfig = { duration: 120, easing: Easing.linear };
+    const targetScale = isPressed.value ? animationValues.scale : 1;
+    const targetOpacity = isPressed.value ? animationValues.opacity : 1;
 
-      return {
-        transform: [{ scale: withTiming(targetScale, timingConfig) }],
-        opacity: isPrimary ? withTiming(targetOpacity, timingConfig) : 1,
-      };
-    },
-    [isPrimary, animationValues.scale, animationValues.opacity],
-  );
+    return {
+      transform: [{ scale: withTiming(targetScale, timingConfig) }],
+      opacity: isPrimary ? withTiming(targetOpacity, timingConfig) : 1,
+    };
+  }, [isPrimary, animationValues.scale, animationValues.opacity]);
 
   return (
     <AnimatedPressable
