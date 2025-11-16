@@ -86,7 +86,7 @@ flowchart TD
 - **Biometric Service**: Manages FaceID/TouchID authentication for seamless auto-login
 - **Auth Store**: Zustand store managing authentication state, user data, and token lifecycle
 
-https://github.com/user-attachments/assets/c31cfb3f-d854-4b34-9418-54e21cf1a5ca
+https://github.com/user-attachments/assets/dd2676e9-a55a-4fae-847f-5888da344870
 
 https://github.com/user-attachments/assets/358fe497-8ba5-4f85-9321-e25f9d0be975
 
