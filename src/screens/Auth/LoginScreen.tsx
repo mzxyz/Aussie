@@ -68,7 +68,6 @@ export const LoginScreen: React.FC<Props> = () => {
         text="Sign In"
         type="primary"
         onPress={handleLogin}
-        icon={{ name: 'log-in-outline' }}
         opacityEnabled={false}
         isLoading={isLoading}
       />

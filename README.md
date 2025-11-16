@@ -36,40 +36,40 @@ The authentication flow integrates Auth0 with OpenID Connect, secure token stora
 ```mermaid
 flowchart TD
     Start([App Launch]) --> CheckTokens{Tokens in<br/>Keychain?}
-    
+
     CheckTokens -->|No| Login[Login Screen]
     CheckTokens -->|Yes| CheckFaceID{FaceID<br/>Enabled?}
-    
+
     Login --> Auth0[Auth0 OIDC Login]
     Auth0 -->|Success| SaveTokens[Save Tokens to Keychain]
     Auth0 -->|Error| Login
-    
+
     SaveTokens --> GetUser[Get User Info]
     GetUser --> Authenticated[✓ Authenticated]
-    
+
     CheckFaceID -->|No| Login
     CheckFaceID -->|Yes| FaceID[FaceID Prompt]
-    
+
     FaceID -->|Success| CheckValid{Tokens<br/>Valid?}
     FaceID -->|Failed| Login
-    
+
     CheckValid -->|Yes| GetUser
     CheckValid -->|No| Refresh[Refresh Token]
-    
+
     Refresh -->|Success| SaveTokens
     Refresh -->|Failed| Login
-    
+
     Authenticated --> UsingApp[Using App]
     Authenticated --> Logout[Logout]
-    
+
     UsingApp --> TokenCheck{Token<br/>Expired?}
     TokenCheck -->|Yes| Refresh
     TokenCheck -->|No| UsingApp
-    
+
     Logout --> ClearTokens[Clear Keychain]
     ClearTokens --> ClearAuth0[Clear Auth0 Session]
     ClearAuth0 --> Login
-    
+
     style Start fill:#e1f5ff
     style Authenticated fill:#d4edda
     style Login fill:#fff3cd
@@ -81,6 +81,7 @@ flowchart TD
 ```
 
 **Key Components:**
+
 - **Auth0 Service**: Handles OIDC authentication, token refresh, and user info retrieval
 - **Keychain Storage**: Securely stores access tokens, ID tokens, and refresh tokens using `react-native-keychain`
 - **Biometric Service**: Manages FaceID/TouchID authentication for seamless auto-login
