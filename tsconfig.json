@@ -12,7 +12,9 @@
       "hooks/*": ["./src/hooks/*"],
       "stores/*": ["src/stores/*"],
       "theme/*": ["./src/theme/*"],
-      "api/*": ["./src/api/*"]
+      "api/*": ["./src/api/*"],
+      "config/*": ["./src/config/*"],
+      "@env": ["./src/types/env.d.ts"]
     }
   },
   "include": ["src", "**/*.ts", "**/*.tsx"]

@@ -17,7 +17,17 @@ module.exports = {
           stores: './src/stores',
           theme: './src/theme',
           api: './src/api',
+          config: './src/config',
         },
+      },
+    ],
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        path: '.env',
+        safe: false,
+        allowUndefined: true,
       },
     ],
     'react-native-worklets/plugin',

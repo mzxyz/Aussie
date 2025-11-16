@@ -1,4 +1,3 @@
-
 # Aussie React Native Demo
 
 Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It showcases navigation, theming, global state management, persisted storage, testing, and CI wiring that you can expand into a production-ready app.
@@ -89,19 +88,23 @@ src
 ## Running Tests
 
 ### Unit Tests
+
 Run `yarn test`
 
-||
-| -- |
-|![Home screen](documents/assets/unit-test.png)|
+|                                                |
+| ---------------------------------------------- |
+| ![Home screen](documents/assets/unit-test.png) |
 
 ### E2E Tests
+
 Run Detox end-to-end tests on iOS:
+
 ```bash
 yarn run detox:test:ios
 ```
 
 E2E tests cover:
+
 - App launch and basic UI verification
 - Tab navigation across all 5 tabs
 - Screen content and interactions for all 6 screens

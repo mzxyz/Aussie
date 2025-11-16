@@ -1,10 +1,11 @@
-import React from 'react';
-import { StatusBar } from 'react-native';
+import React, { useEffect } from 'react';
+import { ActivityIndicator, StatusBar, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { useIsDarkMode } from 'hooks/preferenceHooks';
 
 import { AppNavigator } from './src/navigation';
+import { useAuthStore } from './src/stores/authStore';
 import { makeStyles, ThemeProvider } from './src/theme/ThemeContext';
 
 import './src/utils/localStorage';
@@ -12,11 +13,23 @@ import './src/utils/localStorage';
 function AppContainer() {
   const isDarkMode = useIsDarkMode();
   const styles = useStyles();
+  const { checkAuth, isLoading } = useAuthStore();
+
+  useEffect(() => {
+    // Check authentication state on app launch
+    checkAuth();
+  }, [checkAuth]);
 
   return (
     <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppNavigator />
+      {isLoading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" />
+        </View>
+      ) : (
+        <AppNavigator />
+      )}
     </SafeAreaView>
   );
 }
@@ -36,6 +49,12 @@ const useStyles = makeStyles(({ colors }) => ({
     flex: 1,
     backgroundColor: colors.background,
     paddingBottom: 0,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.background,
   },
 }));
 

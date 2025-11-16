@@ -2,6 +2,7 @@ import { Linking } from 'react-native';
 import { getStateFromPath, LinkingOptions } from '@react-navigation/native';
 
 import { RootTabParamList } from '../navigation/types';
+import { authService } from './authService';
 
 /// reference:
 /// https://reactnavigation.org/docs/deep-linking/
@@ -20,7 +21,17 @@ const TAB_ROOT_SCREENS: Record<keyof RootTabParamList, string> = {
 export const linking: LinkingOptions<RootTabParamList> = {
   prefixes: ['aussie://'],
   subscribe(listener) {
-    const onReceiveURL = ({ url }: { url: string }) => listener(url);
+    const onReceiveURL = ({ url }: { url: string }) => {
+      // Check if this is an Auth0 callback
+      if (authService.handleCallback(url)) {
+        // Auth0 SDK handles the callback automatically
+        // Just pass it through to the listener for navigation
+        listener(url);
+      } else {
+        // Regular deep link
+        listener(url);
+      }
+    };
     const subscription = Linking.addEventListener('url', onReceiveURL);
     return () => subscription.remove();
   },

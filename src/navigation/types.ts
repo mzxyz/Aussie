@@ -30,4 +30,9 @@ export type MyBrokerStackParamList = {
   MyBroker: undefined;
 };
 
+export type AuthStackParamList = {
+  Login: undefined;
+  BiometricAuth: undefined;
+};
+
 export type Navigation<T extends ParamListBase> = NativeStackNavigationProp<T>;

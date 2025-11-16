@@ -5,7 +5,7 @@ import { makeStyles, useTheme } from 'theme/ThemeContext';
 
 type ActionCellProps = {
   title: string;
-  initialValue: boolean;
+  value: boolean;
   onValueChange: (value: boolean) => void;
   showBottomLine?: boolean;
   testID?: string;
@@ -13,7 +13,7 @@ type ActionCellProps = {
 
 export const SwitchCell: React.FC<ActionCellProps> = ({
   title,
-  initialValue,
+  value,
   onValueChange,
   showBottomLine = true,
   testID,
@@ -21,20 +21,13 @@ export const SwitchCell: React.FC<ActionCellProps> = ({
   const { colors } = useTheme();
   const styles = useStyles({ showBottomLine });
 
-  const [value, setValue] = useState(initialValue);
-
-  const handleValueChange = (value: boolean) => {
-    setValue(value);
-    onValueChange(value);
-  };
-
   return (
     <View testID={testID ?? 'action-cell'} style={styles.container}>
       <Text style={styles.text}>{title}</Text>
       <Switch
         style={styles.scaledSwitch}
         value={value}
-        onValueChange={handleValueChange}
+        onValueChange={onValueChange}
         trackColor={{ true: colors.primary, false: colors.line }}
       />
     </View>

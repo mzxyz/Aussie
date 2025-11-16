@@ -1,5 +1,5 @@
 import React from 'react';
-import { useColorScheme, View } from 'react-native';
+import { Alert, useColorScheme, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import {
@@ -11,6 +11,7 @@ import {
   Title,
 } from 'components/index';
 import { HomeStackParamList } from 'navigation/types';
+import { biometricService } from 'services/biometricService';
 import { usePreferenceStore } from 'stores/preferenceStore';
 import { darkTheme, lightTheme } from 'theme/theme';
 import { makeStyles, useThemeContext } from 'theme/ThemeContext';
@@ -37,6 +38,15 @@ export const ProfileScreen: React.FC<Props> = () => {
   const systemScheme = useColorScheme();
   const styles = useStyles();
 
+  const onToggleFaceId = async () => {
+    const result = await biometricService.authenticate('Authenticate to continue');
+    if (result.success) {
+      toggleFaceId();
+    } else {
+      Alert.alert('Error', result.error);
+    }
+  };
+
   const handleMatchSystemTheme = (value: boolean) => {
     setTheme(value && systemScheme === 'dark' ? darkTheme : lightTheme);
     toggleMatchSystemTheme();
@@ -55,12 +65,12 @@ export const ProfileScreen: React.FC<Props> = () => {
         <Title text="Appearence" />
         <SwitchCell
           title="Match system theme"
-          initialValue={systemThemeEnabled}
+          value={systemThemeEnabled}
           onValueChange={handleMatchSystemTheme}
         />
         <SwitchCell
           title="Haptics feddback"
-          initialValue={hapticsEnabled}
+          value={hapticsEnabled}
           onValueChange={toggleHaptics}
           showBottomLine={false}
         />
@@ -68,8 +78,8 @@ export const ProfileScreen: React.FC<Props> = () => {
         <Title text="Privacy & security" />
         <SwitchCell
           title="Login with FaceID"
-          initialValue={faceIdEnabled}
-          onValueChange={toggleFaceId}
+          value={faceIdEnabled}
+          onValueChange={onToggleFaceId}
           showBottomLine={false}
         />
       </View>

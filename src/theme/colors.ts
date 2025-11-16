@@ -3,6 +3,7 @@ export const lightColors = {
   secondary: '#38BDF8',
   highlight: '#F97316',
   line: '#E2E8F0',
+  error: '#FF3B30',
 
   background: '#F8FAFC',
   backgroundSecondary: '#FFFFFF',
@@ -17,6 +18,7 @@ export const darkColors = {
   secondary: '#64748B',
   highlight: '#4b1f68',
   line: '#4b4949',
+  error: '#FF3B30',
 
   background: '#151413',
   backgroundSecondary: '#1b1a1a',

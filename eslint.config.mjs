@@ -48,10 +48,11 @@ export default [
         version: 'detect',
       },
       'import/internal-regex':
-        '^@(?:api|components|hooks|navigation|screens|stores|theme|types|utils)(/|$)',
+        '^@(?:api|components|hooks|navigation|screens|stores|theme|types|utils|env)(/|$)',
       'import/resolver': {
         typescript: {
           project: './tsconfig.json',
+          alwaysTryTypes: true,
         },
         node: {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -66,6 +67,12 @@ export default [
       ...reactHooksPlugin.configs.recommended.rules,
       ...reactNativePlugin.configs.all.rules,
       ...importPlugin.configs.recommended.rules,
+      'import/no-unresolved': [
+        'error',
+        {
+          ignore: ['^@env$'],
+        },
+      ],
       '@typescript-eslint/no-require-imports': [
         'error',
         {
@@ -95,7 +102,7 @@ export default [
           groups: [
             ['^react', '^@?\\w'],
             [
-              '^(components|hooks|navigation|screens|stores|theme|types|utils|services)(/.*|$)',
+              '^(components|hooks|navigation|screens|stores|theme|types|utils|services|config)(/.*|$)',
             ],
             [
               '^\\.\\.(?!/?$)',

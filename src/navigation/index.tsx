@@ -11,8 +11,11 @@ import { ProfileScreen } from 'screens/Home/ProfileScreen';
 import { MyBrokerScreen } from 'screens/MyBroker/MyBrokerScreen';
 import { PropertiesScreen } from 'screens/Properties/PropertiesScreen';
 import { linking } from 'services/deeplink';
+import { useAuthStore } from 'stores/authStore';
+import { usePreferenceStore } from 'stores/preferenceStore';
 import { useTheme } from 'theme/ThemeContext';
 
+import { AuthNavigator } from './AuthNavigator';
 import { NavigationHeader } from './NavigationHeader';
 import { TabBar } from './TabBar';
 import {
@@ -177,9 +180,16 @@ const BottomTabsNavigator = () => {
 };
 
 export const AppNavigator: React.FC = () => {
+  const { isAuthenticated } = useAuthStore();
+  const { faceIdEnabled } = usePreferenceStore();
+
   return (
     <NavigationContainer linking={linking}>
-      <BottomTabsNavigator />
+      {isAuthenticated ? (
+        <BottomTabsNavigator />
+      ) : (
+        <AuthNavigator initialRouteName={faceIdEnabled ? 'BiometricAuth' : 'Login'} />
+      )}
     </NavigationContainer>
   );
 };

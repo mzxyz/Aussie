@@ -11,13 +11,21 @@ type ScrollViewContainerProps = PropsWithChildren<{
   testID?: string;
 }>;
 
+const useSafeBottomTabBarHeight = (): number => {
+  try {
+    return useBottomTabBarHeight();
+  } catch {
+    return 0;
+  }
+};
+
 export const ScrollViewContainer: React.FC<ScrollViewContainerProps> = ({
   children,
   edge = 'both',
   testID,
 }) => {
   const styles = useStyles({ edge });
-  const tabBarHeight = useBottomTabBarHeight();
+  const tabBarHeight = useSafeBottomTabBarHeight();
   const bottomInset = tabBarHeight;
 
   return (
