@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Text, View } from 'react-native';
 
 import { makeStyles, useTheme } from 'theme/ThemeContext';

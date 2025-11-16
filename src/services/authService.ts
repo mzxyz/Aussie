@@ -4,26 +4,25 @@ import * as Keychain from 'react-native-keychain';
 import { AUTH0_CONFIG } from 'config/auth0';
 import { AuthTokens, User } from 'types/auth';
 
-const auth0 = new Auth0({
-  domain: AUTH0_CONFIG.domain,
-  clientId: AUTH0_CONFIG.clientId,
-});
+export class AuthService {
+  private readonly auth0: Auth0;
+  private readonly keychainService = 'com.aussie.auth';
+  private readonly tokensKey = 'auth_tokens';
 
-const KEYCHAIN_SERVICE = 'com.aussie.auth';
-const TOKENS_KEY = 'auth_tokens';
+  constructor() {
+    this.auth0 = new Auth0({
+      domain: AUTH0_CONFIG.domain,
+      clientId: AUTH0_CONFIG.clientId,
+    });
+  }
 
-export const authService = {
-  /**
-   * Login using Auth0 web authentication with PKCE
-   */
-  login: async (): Promise<Credentials> => {
+  async login(): Promise<Credentials> {
     try {
-      const credentials = await auth0.webAuth.authorize({
+      const credentials = await this.auth0.webAuth.authorize({
         scope: 'openid profile email offline_access',
-        audience: undefined, // Add if you have an API audience
+        audience: undefined,
       });
 
-      // Store tokens securely as JSON
       if (credentials.accessToken && credentials.idToken) {
         const tokens: AuthTokens = {
           accessToken: credentials.accessToken,
@@ -31,41 +30,33 @@ export const authService = {
           refreshToken: credentials.refreshToken,
           expiresIn: credentials.expiresIn || 86400,
         };
-        await Keychain.setGenericPassword(TOKENS_KEY, JSON.stringify(tokens), {
-          service: KEYCHAIN_SERVICE,
+        await Keychain.setGenericPassword(this.tokensKey, JSON.stringify(tokens), {
+          service: this.keychainService,
         });
       }
 
       return credentials;
     } catch (error) {
+      // TODO: report to analytics
       throw new Error(
         `Login failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
       );
     }
-  },
+  }
 
-  /**
-   * Logout and clear stored tokens
-   */
-  logout: async (): Promise<void> => {
+  async logout(): Promise<void> {
     try {
-      // Clear tokens from keychain
-      await Keychain.resetGenericPassword({ service: KEYCHAIN_SERVICE });
+      await Keychain.resetGenericPassword({ service: this.keychainService });
 
-      // Logout from Auth0
-      await auth0.webAuth.clearSession();
+      await this.auth0.webAuth.clearSession();
     } catch (error) {
-      // Continue even if logout fails
       console.warn('Logout error:', error);
     }
-  },
+  }
 
-  /**
-   * Get stored credentials from keychain
-   */
-  getCredentials: async (): Promise<AuthTokens | null> => {
+  async getCredentials(): Promise<AuthTokens | null> {
     try {
-      const creds = await Keychain.getGenericPassword({ service: KEYCHAIN_SERVICE });
+      const creds = await Keychain.getGenericPassword({ service: this.keychainService });
       if (!creds || !creds.password) {
         return null;
       }
@@ -75,26 +66,23 @@ export const authService = {
     } catch {
       return null;
     }
-  },
+  }
 
-  /**
-   * Refresh access token using refresh token
-   */
-  refreshToken: async (refreshToken: string): Promise<Credentials> => {
+  async refreshToken(refreshToken: string): Promise<Credentials> {
     try {
-      const credentials = await auth0.auth.refreshToken({ refreshToken });
+      const credentials = await this.auth0.auth.refreshToken({ refreshToken });
 
       // Update stored tokens
       if (credentials.accessToken && credentials.idToken) {
-        const existingTokens = await authService.getCredentials();
+        const existingTokens = await this.getCredentials();
         const tokens: AuthTokens = {
           accessToken: credentials.accessToken,
           idToken: credentials.idToken,
           refreshToken: existingTokens?.refreshToken || credentials.refreshToken,
           expiresIn: credentials.expiresIn || existingTokens?.expiresIn || 86400,
         };
-        await Keychain.setGenericPassword(TOKENS_KEY, JSON.stringify(tokens), {
-          service: KEYCHAIN_SERVICE,
+        await Keychain.setGenericPassword(this.tokensKey, JSON.stringify(tokens), {
+          service: this.keychainService,
         });
       }
 
@@ -104,16 +92,11 @@ export const authService = {
         `Token refresh failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
       );
     }
-  },
+  }
 
-  /**
-   * Get user info from ID token or userinfo endpoint
-   */
-  getUser: async (idToken: string): Promise<User> => {
+  async getUser(idToken: string): Promise<User> {
     try {
-      // Decode ID token to get user info (basic implementation)
-      // In production, you should use a JWT library to decode and verify
-      const userInfo = await auth0.auth.userInfo({ token: idToken });
+      const userInfo = await this.auth0.auth.userInfo({ token: idToken });
       return userInfo as User;
     } catch (error) {
       // TODO: should report those errors to `Amplitude Analytics`
@@ -126,14 +109,12 @@ export const authService = {
         throw new Error('Failed to get user info');
       }
     }
-  },
+  }
 
-  /**
-   * Handle callback URL from Auth0
-   */
-  handleCallback: (url: string): boolean => {
-    // Auth0 SDK handles this automatically via webAuth.authorize()
-    // This is here for reference if custom handling is needed
+  handleCallback(url: string): boolean {
+    // handle callback if custom handling is needed
     return url.includes('auth0.com') || url.includes('callback');
-  },
-};
+  }
+}
+
+export const authService = new AuthService();

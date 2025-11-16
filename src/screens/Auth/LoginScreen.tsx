@@ -28,7 +28,6 @@ export const LoginScreen: React.FC<Props> = () => {
   const [isCheckingBiometric, setIsCheckingBiometric] = useState(true);
 
   useEffect(() => {
-    // Check if biometric is available
     biometricService.isAvailable().then(result => {
       setBiometricAvailable(result.available);
       setIsCheckingBiometric(false);
@@ -38,9 +37,8 @@ export const LoginScreen: React.FC<Props> = () => {
   const handleLogin = async () => {
     try {
       await login();
-      // Navigation will be handled by AppNavigator based on auth state
     } catch (error) {
-      // Error handling is done in the auth store
+      // TODO: report to analytics
       console.error('Login error:', error);
     }
   };
@@ -76,8 +74,8 @@ export const LoginScreen: React.FC<Props> = () => {
       <SectionSpacing size="md" />
       {biometricAvailable && (
         <SwitchCell
+          value={faceIdEnabled}
           title="Enable Face ID for quick access"
-          initialValue={faceIdEnabled}
           onValueChange={handleFaceIdToggle}
           testID="switch-faceid"
         />

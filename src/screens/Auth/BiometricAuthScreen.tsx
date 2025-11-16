@@ -27,11 +27,9 @@ export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Automatically trigger biometric authentication on mount
     if (faceIdEnabled) {
       handleBiometricAuth();
     } else {
-      // If FaceID is not enabled, redirect to login
       navigation.replace('Login');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,16 +45,10 @@ export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
       );
 
       if (result.success) {
-        // Biometric auth successful, restore session
         await checkAuth();
-        // Navigation will be handled by AppNavigator based on auth state
       } else {
-        // User cancelled or failed
         setError(result.error || 'Authentication cancelled');
-        // Navigate to login after a short delay
-        setTimeout(() => {
-          navigation.replace('Login');
-        }, 1500);
+        setTimeout(() => navigation.replace('Login'), 1500);
       }
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Authentication failed');

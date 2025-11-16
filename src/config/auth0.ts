@@ -8,7 +8,7 @@
  *   - Android: com.aussie://YOUR_DOMAIN/android/com.aussie/callback
  * - Allowed Logout URLs: Same as callback URLs
  * - Allowed Web Origins: mz.demo.aussie.auth0://, com.aussie://
- * 
+ *
  * Note: The iOS URL scheme includes ".auth0" suffix as configured in Info.plist
  */
 
