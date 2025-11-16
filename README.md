@@ -26,6 +26,10 @@ Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It sho
 - **Animations:** `react-native-reanimated` implemented for smooth button interactions with scale and opacity animations matching the original app design.
 - **Tooling:** ESLint, Prettier, and Husky-friendly npm scripts, plus a simple CI workflow that lints, formats, and tests on every push/PR.
 
+### Detox testing
+
+https://github.com/user-attachments/assets/9bae7715-8d3a-456c-a07a-30379eeef251
+
 ### Deeplink
 
 https://github.com/user-attachments/assets/50281c92-98a9-46b8-a437-d4ec33cf8b76
