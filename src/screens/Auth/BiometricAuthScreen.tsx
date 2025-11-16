@@ -21,19 +21,26 @@ type Props = NativeStackScreenProps<AuthStackParamList, 'BiometricAuth'>;
 
 export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
   const styles = useStyles();
-  const { checkAuth, isLoading } = useAuthStore();
+  const { checkAuth, isLoading, hasTokens } = useAuthStore();
   const { faceIdEnabled } = usePreferenceStore();
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // If no tokens exist, redirect to login
+    if (!hasTokens) {
+      navigation.replace('Login');
+      return;
+    }
+
+    // If Face ID is enabled, trigger biometric auth automatically
     if (faceIdEnabled) {
       handleBiometricAuth();
     } else {
       navigation.replace('Login');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [faceIdEnabled]);
+  }, [faceIdEnabled, hasTokens]);
 
   const handleBiometricAuth = async () => {
     try {
@@ -45,7 +52,8 @@ export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
       );
 
       if (result.success) {
-        await checkAuth();
+        // After successful Face ID verification, authenticate the user
+        await checkAuth(true);
       } else {
         setError(result.error || 'Authentication cancelled');
         setTimeout(() => navigation.replace('Login'), 1500);

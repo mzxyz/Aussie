@@ -9,15 +9,17 @@ export type AuthState = {
   accessToken: string | null;
   idToken: string | null;
   isLoading: boolean;
+  hasTokens: boolean;
 };
 
 export type AuthActions = {
   login: () => Promise<void>;
   logout: () => Promise<void>;
-  checkAuth: () => Promise<void>;
+  checkAuth: (skipBiometricCheck?: boolean) => Promise<void>;
   refreshAuth: () => Promise<void>;
   setUser: (user: User | null) => void;
   setLoading: (loading: boolean) => void;
+  setAuthenticated: (authenticated: boolean) => void;
 };
 
 export type AuthStore = AuthState & AuthActions;
@@ -28,6 +30,7 @@ const initialState: AuthState = {
   accessToken: null,
   idToken: null,
   isLoading: true,
+  hasTokens: false,
 };
 
 export const createAuthSlice: StateCreator<AuthStore, [], [], AuthStore> = (
@@ -47,6 +50,7 @@ export const createAuthSlice: StateCreator<AuthStore, [], [], AuthStore> = (
         user,
         accessToken: credentials.accessToken || null,
         idToken: credentials.idToken || null,
+        hasTokens: true,
         isLoading: false,
       });
     } catch (error) {
@@ -64,6 +68,7 @@ export const createAuthSlice: StateCreator<AuthStore, [], [], AuthStore> = (
         user: null,
         accessToken: null,
         idToken: null,
+        hasTokens: false,
         isLoading: false,
       });
     } catch (error) {
@@ -72,7 +77,7 @@ export const createAuthSlice: StateCreator<AuthStore, [], [], AuthStore> = (
     }
   },
 
-  checkAuth: async () => {
+  checkAuth: async (skipBiometricCheck: boolean = false) => {
     try {
       set({ isLoading: true });
       const tokens = await authService.getCredentials();
@@ -83,19 +88,20 @@ export const createAuthSlice: StateCreator<AuthStore, [], [], AuthStore> = (
           user: null,
           accessToken: null,
           idToken: null,
+          hasTokens: false,
           isLoading: false,
         });
         return;
       }
 
-      // Get user info from ID token
       const user = await authService.getUser(tokens.idToken);
 
       set({
-        isAuthenticated: true,
+        isAuthenticated: skipBiometricCheck,
         user,
         accessToken: tokens.accessToken,
         idToken: tokens.idToken,
+        hasTokens: true,
         isLoading: false,
       });
     } catch (error) {
@@ -105,6 +111,7 @@ export const createAuthSlice: StateCreator<AuthStore, [], [], AuthStore> = (
         user: null,
         accessToken: null,
         idToken: null,
+        hasTokens: false,
         isLoading: false,
       });
     }
@@ -140,6 +147,10 @@ export const createAuthSlice: StateCreator<AuthStore, [], [], AuthStore> = (
 
   setLoading: (loading: boolean) => {
     set({ isLoading: loading });
+  },
+
+  setAuthenticated: (authenticated: boolean) => {
+    set({ isAuthenticated: authenticated });
   },
 });
 

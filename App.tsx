@@ -6,18 +6,26 @@ import { useIsDarkMode } from 'hooks/preferenceHooks';
 
 import { AppNavigator } from './src/navigation';
 import { useAuthStore } from './src/stores/authStore';
+import { usePreferenceStore } from './src/stores/preferenceStore';
 import { makeStyles, ThemeProvider } from './src/theme/ThemeContext';
 
 import './src/utils/localStorage';
 
 function AppContainer() {
-  const { checkAuth, isLoading } = useAuthStore();
+  const { checkAuth, isLoading, hasTokens, setAuthenticated } = useAuthStore();
+  const { faceIdEnabled } = usePreferenceStore();
   const isDarkMode = useIsDarkMode();
   const styles = useStyles();
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+  useEffect(() => {
+    if (!isLoading && hasTokens && !faceIdEnabled) {
+      setAuthenticated(true);
+    }
+  }, [isLoading, hasTokens, faceIdEnabled, setAuthenticated]);
 
   return (
     <SafeAreaView edges={['top', 'bottom']} style={styles.container}>

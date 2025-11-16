@@ -180,15 +180,18 @@ const BottomTabsNavigator = () => {
 };
 
 export const AppNavigator: React.FC = () => {
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, hasTokens } = useAuthStore();
   const { faceIdEnabled } = usePreferenceStore();
+
+  const getInitialAuthRoute = (): 'BiometricAuth' | 'Login' =>
+    hasTokens && faceIdEnabled ? 'BiometricAuth' : 'Login';
 
   return (
     <NavigationContainer linking={linking}>
       {isAuthenticated ? (
         <BottomTabsNavigator />
       ) : (
-        <AuthNavigator initialRouteName={faceIdEnabled ? 'BiometricAuth' : 'Login'} />
+        <AuthNavigator initialRouteName={getInitialAuthRoute()} />
       )}
     </NavigationContainer>
   );
