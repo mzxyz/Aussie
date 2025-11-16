@@ -3,12 +3,13 @@
 Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It showcases navigation, theming, global state management, persisted storage, testing, and CI wiring that you can expand into a production-ready app.
 
 ## Screens
-| Login | FaceID Auto Login | Logout|
-| -- | ---| ----|
-|![App](documents/assets/app.png)|<img width="1320" height="2868" alt="login" src="https://github.com/user-attachments/assets/accb7ee0-66ce-43b6-b61f-461d1844605c" />|<img width="1320" height="2868" alt="biometric-login" src="https://github.com/user-attachments/assets/b950bb3f-133e-4200-b93e-c23bccc83e48" />|
 
-| App                              | Home                                      | Appointment                                             |
-| -------------------------------- | ----------------------------------------- | ------------------------------------------------------- |
+| Login                            | FaceID Auto Login                                                                                                                    | Logout                                                                                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![App](documents/assets/app.png) | <img width="1320" height="2868" alt="login" src="https://github.com/user-attachments/assets/accb7ee0-66ce-43b6-b61f-461d1844605c" /> | <img width="1320" height="2868" alt="biometric-login" src="https://github.com/user-attachments/assets/b950bb3f-133e-4200-b93e-c23bccc83e48" /> |
+
+| App                                                                                                                                   | Home                                      | Appointment                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------- |
 | <img width="1320" height="2868" alt="logout" src="https://github.com/user-attachments/assets/cef6e341-6edb-4527-ad17-162e55c258d4" /> | ![Home screen](documents/assets/home.png) | ![Appointment screen](documents/assets/appointment.png) |
 
 | Finances - Dark                                        | Finance - Light                                                   | Profile - Light                                             |
@@ -90,7 +91,6 @@ flowchart TD
 https://github.com/user-attachments/assets/dd2676e9-a55a-4fae-847f-5888da344870
 
 https://github.com/user-attachments/assets/358fe497-8ba5-4f85-9321-e25f9d0be975
-
 
 ### Detox testing
 
