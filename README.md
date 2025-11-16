@@ -103,43 +103,55 @@ $ tree -L 2 src
 src
 ├── api
 ├── assets
-│   └── images
+│   └── images
 ├── components
-│   ├── ActionCell.tsx
-│   ├── Button.tsx
-│   ├── Container.tsx
-│   ├── Spacing.tsx
-│   ├── Text.tsx
-│   ├── __tests__
-│   └── index.tsx
+│   ├── ActionCell.tsx
+│   ├── Button.tsx
+│   ├── Container.tsx
+│   ├── Logo.tsx
+│   ├── Spacing.tsx
+│   ├── SwitchCell.tsx
+│   ├── Text.tsx
+│   ├── __tests__
+│   └── index.tsx
+├── config
+│   └── auth0.ts
 ├── hooks
-│   └── preferenceHooks.ts
+│   └── preferenceHooks.ts
 ├── navigation
-│   ├── NavigationHeader.tsx
-│   ├── TabBar.tsx
-│   ├── index.tsx
-│   └── types.ts
+│   ├── AuthNavigator.tsx
+│   ├── NavigationHeader.tsx
+│   ├── TabBar.tsx
+│   ├── index.tsx
+│   └── types.ts
 ├── screens
-│   ├── Appointment
-│   ├── Finances
-│   ├── Home
-│   ├── MyBroker
-│   └── Properties
+│   ├── Appointment
+│   ├── Auth
+│   ├── Finances
+│   ├── Home
+│   ├── MyBroker
+│   └── Properties
 ├── services
-│   └── appLaunch.ts
-├── store
-│   ├── __tests__
-│   ├── preferenceStore.ts
-│   └── store.ts
+│   ├── authService.ts
+│   ├── biometricService.ts
+│   └── deeplink.ts
+├── stores
+│   ├── __tests__
+│   ├── authStore.ts
+│   ├── index.ts
+│   ├── preferenceStore.ts
+│   └── stateStorage.ts
 ├── theme
-│   ├── ThemeContext.tsx
-│   ├── colors.ts
-│   ├── index.tsx
-│   ├── spacings.ts
-│   ├── theme.ts
-│   ├── typography.ts
-│   └── useStyle.ts
+│   ├── ThemeContext.tsx
+│   ├── colors.ts
+│   ├── index.tsx
+│   ├── spacings.ts
+│   ├── theme.ts
+│   ├── typography.ts
+│   └── useStyle.ts
 ├── types
+│   ├── auth.ts
+│   └── env.d.ts
 └── utils
     └── localStorage.ts
 ```

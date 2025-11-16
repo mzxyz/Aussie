@@ -38,7 +38,7 @@ export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
     }
 
     if (faceIdEnabled) {
-      // handleBiometricAuth();
+      handleBiometricAuth();
     } else {
       navigation.replace('Login');
     }
