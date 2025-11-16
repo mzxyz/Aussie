@@ -11,7 +11,7 @@ export type PreferenceState = {
   systemThemeEnabled: boolean;
 };
 
-export type PreferenceSlice = PreferenceState & {
+export type PreferenceActions = {
   setFaceIdEnabled: (enabled: boolean) => void;
   toggleFaceId: () => void;
   setHapticsEnabled: (enabled: boolean) => void;
@@ -21,6 +21,8 @@ export type PreferenceSlice = PreferenceState & {
   reset: () => void;
 };
 
+export type PreferenceStore = PreferenceState & PreferenceActions;
+
 export const initialState: PreferenceState = {
   faceIdEnabled: false,
   hapticsEnabled: true,
@@ -28,10 +30,10 @@ export const initialState: PreferenceState = {
 };
 
 export const createPreferenceSlice: StateCreator<
-  PreferenceSlice,
+  PreferenceStore,
   [],
   [],
-  PreferenceSlice
+  PreferenceStore
 > = (set, get) => ({
   ...initialState,
   setFaceIdEnabled: enabled => set({ faceIdEnabled: enabled }),
@@ -43,7 +45,7 @@ export const createPreferenceSlice: StateCreator<
   reset: () => set({ ...initialState }),
 });
 
-export const usePreferenceStore = create<PreferenceSlice>()(
+export const usePreferenceStore = create<PreferenceStore>()(
   persist((...a) => createPreferenceSlice(...a), {
     name: cacheKeys.preferenceStore,
     storage: createJSONStorage(() => mmkvStorage),

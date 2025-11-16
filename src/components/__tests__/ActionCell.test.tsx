@@ -5,16 +5,6 @@ import { ThemeProvider } from 'theme/ThemeContext';
 
 import { ActionCell } from '../ActionCell';
 
-jest.mock('@react-native-vector-icons/ionicons', () => {
-  const React = require('react');
-  const { Text } = require('react-native');
-
-  const MockIcon = ({ name }: { name: string }) =>
-    React.createElement(Text, { testID: `icon-${name}` }, name);
-
-  return { Ionicons: MockIcon };
-});
-
 const renderWithProviders = (ui: React.ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);
 };

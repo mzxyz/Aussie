@@ -24,11 +24,8 @@ export const linking: LinkingOptions<RootTabParamList> = {
     const onReceiveURL = ({ url }: { url: string }) => {
       // Check if this is an Auth0 callback
       if (authService.handleCallback(url)) {
-        // Auth0 SDK handles the callback automatically
-        // Just pass it through to the listener for navigation
         listener(url);
       } else {
-        // Regular deep link
         listener(url);
       }
     };

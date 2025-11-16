@@ -11,12 +11,11 @@ import { makeStyles, ThemeProvider } from './src/theme/ThemeContext';
 import './src/utils/localStorage';
 
 function AppContainer() {
+  const { checkAuth, isLoading } = useAuthStore();
   const isDarkMode = useIsDarkMode();
   const styles = useStyles();
-  const { checkAuth, isLoading } = useAuthStore();
 
   useEffect(() => {
-    // Check authentication state on app launch
     checkAuth();
   }, [checkAuth]);
 
