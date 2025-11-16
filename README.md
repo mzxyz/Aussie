@@ -1,5 +1,25 @@
 # Aussie React Native Demo
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/react-native"><img src="https://img.shields.io/badge/react--native-v0.80.0-61DAFB?style=flat-square&logo=react" alt="React Native"></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-v22.0.0-339933?style=flat-square&logo=node.js" alt="Node.js"></a>
+  <a href="https://www.ruby-lang.org/"><img src="https://img.shields.io/badge/ruby-v3.4.7-CC342D?style=flat-square&logo=ruby" alt="Ruby"></a>
+  <a href="https://cocoapods.org/"><img src="https://img.shields.io/badge/cocoapods-1.16.2-FA2A00?style=flat-square&logo=cocoapods" alt="CocoaPods"></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-v5.0.4-3178C6?style=flat-square&logo=typescript" alt="TypeScript"></a>
+</p>
+
+## Requirements
+
+Apps using this project require the following versions:
+
+- **react-native**: v0.80.0
+- **node**: v22.0.0
+- **ruby**: v3.4.7
+- **cocoapods**: 1.16.2
+- **typescript**: v5.0.4
+
+---
+
 Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It showcases navigation, theming, global state management, persisted storage, testing, and CI wiring that you can expand into a production-ready app.
 
 ## Screens
