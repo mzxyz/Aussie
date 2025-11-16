@@ -1,8 +1,10 @@
 import '@testing-library/jest-native/extend-expect';
 
-jest.mock('@env', () => ({
-  AUTH0_DOMAIN: 'test-auth0-domain.auth0.com',
-  AUTH0_CLIENT_ID: 'test-auth0-client-id',
+jest.mock('config/auth0', () => ({
+  AUTH0_CONFIG: {
+    domain: 'test-auth0-domain.auth0.com',
+    clientId: 'test-auth0-client-id',
+  },
 }));
 
 jest.mock('react-native-mmkv-storage', () => {
