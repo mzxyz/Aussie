@@ -56,40 +56,42 @@ export const LoginScreen: React.FC<Props> = () => {
   }
 
   return (
-    <ScrollViewContainer testID="screen-Login" edge="both">
-      <SectionSpacing size="lg" />
-      <Logo size={80} />
-      <SectionSpacing size="lg" />
+    <ScrollViewContainer testID="screen-Login" style={styles.container} edge="both">
+      <Logo size={200} />
       <Header text="Welcome to Aussie" />
+      <Body
+        style={styles.text}
+        text="Sign in to access your property portfolio and financial insights"
+      />
       <SectionSpacing size="md" />
-      <Body text="Sign in to access your property portfolio and financial insights" />
-      <SectionSpacing size="lg" />
       <Button
         text="Sign In"
         type="primary"
         onPress={handleLogin}
         icon={{ name: 'log-in-outline' }}
         opacityEnabled={false}
+        isLoading={isLoading}
       />
-      <SectionSpacing size="md" />
       {biometricAvailable && (
         <SwitchCell
+          testID="switch-face-id"
           value={faceIdEnabled}
           title="Enable Face ID for quick access"
           onValueChange={handleFaceIdToggle}
-          testID="switch-faceid"
+          showBottomLine={false}
         />
-      )}
-      {isLoading && (
-        <View style={styles.loadingOverlay}>
-          <ActivityIndicator size="large" />
-        </View>
       )}
     </ScrollViewContainer>
   );
 };
 
-const useStyles = makeStyles(({ colors }) => ({
+const useStyles = makeStyles(({ colors, margin }) => ({
+  container: {
+    gap: margin.large,
+  },
+  text: {
+    textAlign: 'center',
+  },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
@@ -26,16 +26,19 @@ export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const _isLoading = useMemo(
+    () => isAuthenticating || isLoading,
+    [isAuthenticating, isLoading],
+  );
+
   useEffect(() => {
-    // If no tokens exist, redirect to login
     if (!hasTokens) {
       navigation.replace('Login');
       return;
     }
 
-    // If Face ID is enabled, trigger biometric auth automatically
     if (faceIdEnabled) {
-      handleBiometricAuth();
+      // handleBiometricAuth();
     } else {
       navigation.replace('Login');
     }
@@ -52,7 +55,6 @@ export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
       );
 
       if (result.success) {
-        // After successful Face ID verification, authenticate the user
         await checkAuth(true);
       } else {
         setError(result.error || 'Authentication cancelled');
@@ -66,49 +68,45 @@ export const BiometricAuthScreen: React.FC<Props> = ({ navigation }) => {
     }
   };
 
-  const handleSkip = () => {
+  const handleUsePassword = () => {
     navigation.replace('Login');
   };
 
   return (
-    <ScrollViewContainer testID="screen-BiometricAuth" edge="both">
+    <ScrollViewContainer
+      style={styles.container}
+      testID="screen-BiometricAuth"
+      edge="both"
+    >
       <SectionSpacing size="lg" />
-      <Logo size={80} />
-      <SectionSpacing size="lg" />
+      <Logo size={150} />
       <Header text="Welcome Back" />
-      <SectionSpacing size="md" />
       <Body text="Use Face ID to quickly access your account" />
       <SectionSpacing size="lg" />
-      {isAuthenticating || isLoading ? (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" />
-          <SectionSpacing size="md" />
-          <Body text="Authenticating..." />
-        </View>
-      ) : (
-        <>
-          {error && <Body text={error} style={styles.errorText} />}
-          <SectionSpacing size="md" />
-          <Button
-            text="Use Face ID"
-            type="primary"
-            onPress={handleBiometricAuth}
-            icon={{ name: 'finger-print-outline' }}
-          />
-          <SectionSpacing size="sm" />
-          <Button
-            text="Use Password Instead"
-            type="secondary"
-            onPress={handleSkip}
-            icon={{ name: 'key-outline' }}
-          />
-        </>
-      )}
+      <Button
+        text="Use Face ID"
+        type="primary"
+        onPress={handleBiometricAuth}
+        icon={{ name: 'finger-print-outline' }}
+        isLoading={_isLoading}
+      />
+      <Button
+        text="Use Password"
+        type="secondary"
+        onPress={handleUsePassword}
+        radius="full"
+        icon={{ name: 'key-outline' }}
+        disabled={_isLoading}
+      />
+      {error && <Body text={error} style={styles.errorText} />}
     </ScrollViewContainer>
   );
 };
 
-const useStyles = makeStyles(({ colors, fontSizes }) => ({
+const useStyles = makeStyles(({ colors, fontSizes, margin }) => ({
+  container: {
+    gap: margin.large,
+  },
   loadingContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -118,5 +116,6 @@ const useStyles = makeStyles(({ colors, fontSizes }) => ({
     color: colors.error,
     textAlign: 'center',
     fontSize: fontSizes.small,
+    marginTop: margin.small,
   },
 }));

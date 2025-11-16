@@ -1,10 +1,10 @@
 import React from 'react';
-import { Alert, useColorScheme, View } from 'react-native';
+import { Alert, Image, useColorScheme, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import {
   ActionCell,
-  Header,
+  Button,
   ScrollViewContainer,
   SectionSpacing,
   SwitchCell,
@@ -12,6 +12,7 @@ import {
 } from 'components/index';
 import { HomeStackParamList } from 'navigation/types';
 import { biometricService } from 'services/biometricService';
+import { useAuthStore } from 'stores/authStore';
 import { usePreferenceStore } from 'stores/preferenceStore';
 import { darkTheme, lightTheme } from 'theme/theme';
 import { makeStyles, useThemeContext } from 'theme/ThemeContext';
@@ -38,6 +39,8 @@ export const ProfileScreen: React.FC<Props> = () => {
   const systemScheme = useColorScheme();
   const styles = useStyles();
 
+  const { user, logout, isLoading } = useAuthStore();
+
   const onToggleFaceId = async () => {
     const result = await biometricService.authenticate('Authenticate to continue');
     if (result.success) {
@@ -55,8 +58,10 @@ export const ProfileScreen: React.FC<Props> = () => {
   return (
     <ScrollViewContainer testID="screen-Profile">
       <View style={styles.avatar}>
-        <Header text="MZ" />
+        <Image source={{ uri: user?.picture }} style={styles.avatarImage} />
       </View>
+      <Title text={user?.name || ''} />
+      <SectionSpacing size="md" />
       {datasource.map(item => (
         <ActionCell key={item.name} title={item.title} onPress={() => {}} />
       ))}
@@ -83,6 +88,8 @@ export const ProfileScreen: React.FC<Props> = () => {
           showBottomLine={false}
         />
       </View>
+      <SectionSpacing size="lg" />
+      <Button text="Logout" onPress={logout} isLoading={isLoading} />
     </ScrollViewContainer>
   );
 };
@@ -95,7 +102,12 @@ const useStyles = makeStyles(({ colors, margin }) => ({
     borderRadius: 40,
     width: 80,
     height: 80,
-    marginBottom: margin.xlarge,
+    marginBottom: margin.medium,
+    overflow: 'hidden',
+  },
+  avatarImage: {
+    width: '100%',
+    height: '100%',
   },
   settingsContainer: {
     width: '100%',

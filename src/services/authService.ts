@@ -47,7 +47,6 @@ export class AuthService {
   async logout(): Promise<void> {
     try {
       await Keychain.resetGenericPassword({ service: this.keychainService });
-
       await this.auth0.webAuth.clearSession();
     } catch (error) {
       console.warn('Logout error:', error);

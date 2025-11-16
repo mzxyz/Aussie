@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleProp, ViewStyle } from 'react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 import { makeStyles } from '../theme/ThemeContext';
@@ -7,6 +7,7 @@ import { makeStyles } from '../theme/ThemeContext';
 type Edge = 'horizontal' | 'vertical' | 'both';
 
 type ScrollViewContainerProps = PropsWithChildren<{
+  style?: StyleProp<ViewStyle>;
   edge?: Edge;
   testID?: string;
 }>;
@@ -21,6 +22,7 @@ const useSafeBottomTabBarHeight = (): number => {
 
 export const ScrollViewContainer: React.FC<ScrollViewContainerProps> = ({
   children,
+  style,
   edge = 'both',
   testID,
 }) => {
@@ -32,7 +34,7 @@ export const ScrollViewContainer: React.FC<ScrollViewContainerProps> = ({
     <ScrollView
       testID={testID}
       style={styles.container}
-      contentContainerStyle={styles.contentContainer}
+      contentContainerStyle={[styles.contentContainer, style]}
       contentInset={{ bottom: bottomInset }}
       contentInsetAdjustmentBehavior="automatic"
     >

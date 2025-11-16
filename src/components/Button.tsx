@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text } from 'react-native';
+import { ActivityIndicator, Pressable, Text } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -18,6 +18,8 @@ type ButtonProps = {
   icon?: { name: IoniconsIconName; size?: number; color?: string };
   scaleEnabled?: boolean;
   opacityEnabled?: boolean;
+  isLoading?: boolean;
+  disabled?: boolean;
   onPress: () => void;
 };
 
@@ -30,6 +32,8 @@ export const Button: React.FC<ButtonProps> = ({
   radius = 'small',
   scaleEnabled = true,
   opacityEnabled = true,
+  disabled = false,
+  isLoading = false,
   onPress = () => {},
 }) => {
   const isPrimary = type === 'primary';
@@ -63,11 +67,15 @@ export const Button: React.FC<ButtonProps> = ({
       onPress={onPress}
       onPressIn={() => (isPressed.value = 1)}
       onPressOut={() => (isPressed.value = 0)}
+      disabled={isLoading || disabled}
     >
-      {icon && <Icon name={icon.name} size={iconSize} color={iconColor} />}
-      <Text style={styles.text} numberOfLines={1}>
-        {text}
-      </Text>
+      {icon && !isLoading && <Icon name={icon.name} size={iconSize} color={iconColor} />}
+      {!isLoading && (
+        <Text style={styles.text} numberOfLines={1}>
+          {text}
+        </Text>
+      )}
+      {isLoading && <ActivityIndicator size="small" color={colors.indicator} />}
     </AnimatedPressable>
   );
 };
