@@ -8,19 +8,7 @@
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-v5.0.4-3178C6?style=flat-square&logo=typescript" alt="TypeScript"></a>
 </p>
 
-## Requirements
-
-Apps using this project require the following versions:
-
-- **react-native**: v0.80.0
-- **node**: v22.0.0
-- **ruby**: v3.4.7
-- **cocoapods**: 1.16.2
-- **typescript**: v5.0.4
-
----
-
-Demo mobile app scaffold for Aussie, built with **React Native v0.80.0**. It showcases navigation, theming, global state management, persisted storage, testing, and CI wiring that you can expand into a production-ready app.
+Demo mobile app scaffold for Aussie, built with React Native v0.80.0. A production-ready foundation featuring Auth0 authentication with OpenID Connect (OIDC), comprehensive testing (Jest unit tests and Detox E2E tests), deep linking support, navigation, theming, global state management with Zustand, persisted storage with MMKV, biometric authentication, and modern tooling with ESLint, Prettier, and lint-staged pre-commit hooks.
 
 ## Screens
 
